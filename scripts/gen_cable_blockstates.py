@@ -1,7 +1,8 @@
 import json
 import os
+from pathlib import Path
 
-BASE = r"M:\others\ae2-ponder-fix\src\main\resources\assets\ccq_core"
+BASE = Path(__file__).resolve().parents[1] / "src/main/resources/assets/ccq_core"
 
 SIDES = ["north", "south", "east", "west", "up", "down"]
 ARM_ROT = {
@@ -117,6 +118,7 @@ def cable_models(cable_type, state):
 
 
 def write_json(path, data):
+    path = os.fspath(path)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(data, f, indent=2)
