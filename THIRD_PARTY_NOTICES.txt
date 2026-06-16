@@ -10,18 +10,17 @@ CCQ Default Gun Pack (ccq_default_gun)
 Applied Armorer (TaCZ gun pack)
 -------------------------------
 
-  Applied Armorer itself is NOT bundled in ccq_core.
-  The modpack must provide the official gun pack under .minecraft/tacz/.
+  Applied Armorer is NOT bundled in ccq_core.
 
-  When an Applied Armorer pack is already present, ccq_core may apply a CCQ patch:
+  If the player already has an Applied Armorer pack under .minecraft/tacz/,
+  ccq_core may generate CCQ workbench tab configuration at runtime and write it
+  into the existing pack file (in-place). No separate gun-pack patch files are
+  shipped in the mod jar.
 
-    File:  data/applied_armorer/data/blocks/worckbench_applied_armorer_data.json
-    Patch: patches/applied_armorer/worckbench_applied_armorer_data.json
-
-  Purpose: restore gun terminal tabs on TaCZ 1.21.1 for Create Craft & Quiet.
-
-  This patch is CCQ configuration, not part of Applied Armorer.
   Applied Armorer remains CC BY-NC-ND 4.0 (Koei, Ithaqua).
   https://space.bilibili.com/407541278
+
+  Modifying a third-party ND-licensed pack may require author permission.
+  Contact the authors before redistributing modified pack files.
 
 When sharing ccq_core, retain this NOTICE.

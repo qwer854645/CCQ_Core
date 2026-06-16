@@ -3,7 +3,6 @@ package ccq.core.tacz;
 import ccq.core.CcqCoreMod;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -14,7 +13,6 @@ import java.util.Optional;
 final class AppliedArmorerPatch {
     static final String ZIP_GLOB = "Applied Armorer*.zip";
     static final String WORKBENCH_DATA_ENTRY = "data/applied_armorer/data/blocks/worckbench_applied_armorer_data.json";
-    static final String PATCH_RESOURCE = "/patches/applied_armorer/worckbench_applied_armorer_data.json";
 
     private AppliedArmorerPatch() {
     }
@@ -33,9 +31,9 @@ final class AppliedArmorerPatch {
                 return;
             }
 
-            byte[] patchContent = readPatchResource();
+            byte[] patchContent = AppliedArmorerWorkbenchData.createPatchedContent();
             applyPatch(packPath, patchContent);
-            CcqCoreMod.LOGGER.info("Applied CCQ patch to Applied Armorer pack: {}", packPath.toAbsolutePath());
+            CcqCoreMod.LOGGER.info("Patched Applied Armorer workbench data in {}", packPath.toAbsolutePath());
         } catch (IOException exception) {
             CcqCoreMod.LOGGER.error("Failed to apply Applied Armorer CCQ patch", exception);
         }
@@ -98,14 +96,5 @@ final class AppliedArmorerPatch {
         Path dataFile = packPath.resolve(WORKBENCH_DATA_ENTRY);
         Files.createDirectories(dataFile.getParent());
         Files.write(dataFile, patchContent, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
-    }
-
-    private static byte[] readPatchResource() throws IOException {
-        try (InputStream input = AppliedArmorerPatch.class.getResourceAsStream(PATCH_RESOURCE)) {
-            if (input == null) {
-                throw new IOException("Patch resource missing: " + PATCH_RESOURCE);
-            }
-            return input.readAllBytes();
-        }
     }
 }
