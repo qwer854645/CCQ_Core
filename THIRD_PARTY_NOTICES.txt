@@ -4,8 +4,21 @@ Third-Party Gun Packs — ccq_core
 CCQ Default Gun Pack (ccq_default_gun)
 --------------------------------------
 
-  Embedded in ccq_core and installed to .minecraft/tacz/ccq_default_gun when missing.
-  Derived from TACZ Default Gun Pack (TACZ Dev Team, CC BY-NC-ND 4.0).
+  NOT embedded in ccq_core.
+
+  If the player already has a TACZ default gun pack under .minecraft/tacz/
+  (for example tacz_default_gun/ or tacz_default_gun*.zip), ccq_core may copy
+  a whitelisted subset of files at runtime, write CCQ metadata, and output the
+  result as ccq_default_gun/. The original tacz_default_gun* pack is removed
+  afterward to avoid loading duplicate default packs.
+
+  If no local default pack exists, ccq_core may extract the required files
+  directly from the installed tacz mod jar
+  (assets/tacz/custom/tacz_default_gun/) before writing ccq_default_gun/.
+
+  Retained assets are derived from the TACZ Default Gun Pack (TACZ Dev Team,
+  CC BY-NC-ND 4.0), including 12 gauge ammo and shared resources required by
+  third-party gun packs.
 
 Applied Armorer (TaCZ gun pack)
 -------------------------------

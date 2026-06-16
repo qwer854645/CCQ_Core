@@ -4,10 +4,10 @@ license = "MIT"
 
 [[mods]]
 modId = "ccq_core"
-version = "0.3.6"
+version = "0.3.8"
 displayName = "CCQ Core"
 authors = "CCQ"
-description = "CCQ modpack core utilities: AE2 Ponder props, ccq_default_gun provisioning, and runtime Applied Armorer workbench integration."
+description = "CCQ modpack core utilities: AE2 Ponder props, runtime TACZ default gun pack stripping, and Applied Armorer workbench integration."
 
 [[dependencies.ccq_core]]
 modId = "neoforge"
