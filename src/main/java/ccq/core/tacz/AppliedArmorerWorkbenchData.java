@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -13,7 +14,10 @@ import java.util.List;
  * Generated in code — not shipped as gun-pack resource files.
  */
 final class AppliedArmorerWorkbenchData {
-    private static final Gson GSON = new GsonBuilder().disableHtmlEscaping().create();
+    private static final Gson GSON = new GsonBuilder()
+            .disableHtmlEscaping()
+            .setPrettyPrinting()
+            .create();
 
     private record TabDefinition(String id, String nameKey, String item, String nbtKey, String nbtValue) {
     }
@@ -38,6 +42,23 @@ final class AppliedArmorerWorkbenchData {
     }
 
     static byte[] createPatchedContent() {
+        return serialize(buildExpectedRoot());
+    }
+
+    static boolean matchesExpectedContent(byte[] content) {
+        if (content == null) {
+            return false;
+        }
+
+        try {
+            JsonObject current = GSON.fromJson(decodeJsonText(content), JsonObject.class);
+            return current != null && current.equals(buildExpectedRoot());
+        } catch (JsonSyntaxException exception) {
+            return false;
+        }
+    }
+
+    private static JsonObject buildExpectedRoot() {
         JsonObject root = new JsonObject();
         root.addProperty("filter", "applied_armorer:default");
 
@@ -58,6 +79,23 @@ final class AppliedArmorerWorkbenchData {
         }
 
         root.add("tabs", tabs);
-        return GSON.toJson(root).getBytes(StandardCharsets.UTF_8);
+        return root;
+    }
+
+    private static byte[] serialize(JsonObject root) {
+        String json = GSON.toJson(root).replace("\n", "\r\n");
+        if (!json.endsWith("\r\n")) {
+            json = json + "\r\n";
+        }
+
+        return json.getBytes(StandardCharsets.UTF_8);
+    }
+
+    private static String decodeJsonText(byte[] bytes) {
+        if (bytes.length >= 3 && (bytes[0] & 0xFF) == 0xEF && (bytes[1] & 0xFF) == 0xBB && (bytes[2] & 0xFF) == 0xBF) {
+            return new String(bytes, 3, bytes.length - 3, StandardCharsets.UTF_8);
+        }
+
+        return new String(bytes, StandardCharsets.UTF_8);
     }
 }
