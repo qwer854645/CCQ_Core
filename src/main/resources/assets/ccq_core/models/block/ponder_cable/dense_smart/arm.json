@@ -1,0 +1,7 @@
+{
+  "parent": "ae2:part/cable/dense_smart/connection",
+  "textures": {
+    "base": "ae2:part/cable/dense_smart/transparent",
+    "channels": "ae2:part/cable/dense_smart/channels_04"
+  }
+}

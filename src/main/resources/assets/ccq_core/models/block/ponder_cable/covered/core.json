@@ -1,0 +1,4 @@
+{
+  "parent": "ae2:part/cable/covered/center",
+  "textures": { "base": "ae2:part/cable/covered/transparent" }
+}

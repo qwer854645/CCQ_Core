@@ -1,0 +1,6 @@
+{
+  "parent": "ae2:part/cable/glass/straight",
+  "textures": {
+    "base": "ae2:part/cable/glass/transparent"
+  }
+}
