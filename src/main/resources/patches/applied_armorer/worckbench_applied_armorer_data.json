@@ -1,0 +1,135 @@
+{
+  "filter": "applied_armorer:default",
+  "tabs": [
+    {
+      "id": "tacz:pistol",
+      "name": "tacz.type.pistol.name",
+      "icon": {
+        "item": "tacz:modern_kinetic_gun",
+        "nbt": {
+          "GunId": "applied_armorer:niklas_pistol_semi_pride"
+        }
+      }
+    },
+    {
+      "id": "tacz:shotgun",
+      "name": "tacz.type.shotgun.name",
+      "icon": {
+        "item": "tacz:modern_kinetic_gun",
+        "nbt": {
+          "GunId": "applied_armorer:moritz_shotgun_sg914"
+        }
+      }
+    },
+    {
+      "id": "tacz:rifle",
+      "name": "tacz.type.rifle.name",
+      "icon": {
+        "item": "tacz:modern_kinetic_gun",
+        "nbt": {
+          "GunId": "applied_armorer:moritz_rifle_ar77"
+        }
+      }
+    },
+    {
+      "id": "tacz:sniper",
+      "name": "tacz.type.sniper.name",
+      "icon": {
+        "item": "tacz:modern_kinetic_gun",
+        "nbt": {
+          "GunId": "applied_armorer:moritz_sniper_semi_k30"
+        }
+      }
+    },
+    {
+      "id": "tacz:smg",
+      "name": "tacz.type.smg.name",
+      "icon": {
+        "item": "tacz:modern_kinetic_gun",
+        "nbt": {
+          "GunId": "applied_armorer:niklas_smg_freedom"
+        }
+      }
+    },
+    {
+      "id": "tacz:mg",
+      "name": "tacz.type.mg.name",
+      "icon": {
+        "item": "tacz:modern_kinetic_gun",
+        "nbt": {
+          "GunId": "applied_armorer:moritz_mg_hmg22"
+        }
+      }
+    },
+    {
+      "id": "tacz:rpg",
+      "name": "tacz.type.rpg.name",
+      "icon": {
+        "item": "tacz:modern_kinetic_gun",
+        "nbt": {
+          "GunId": "applied_armorer:moritz_gernade_gl3"
+        }
+      }
+    },
+    {
+      "id": "tacz:ammo",
+      "name": "tacz.type.ammo.name",
+      "icon": {
+        "item": "tacz:ammo",
+        "nbt": {
+          "AmmoId": "applied_armorer:fluix_battery"
+        }
+      }
+    },
+    {
+      "id": "tacz:scope",
+      "name": "tacz.type.scope.name",
+      "icon": {
+        "item": "tacz:attachment",
+        "nbt": {
+          "AttachmentId": "applied_armorer:scope_ms_14"
+        }
+      }
+    },
+    {
+      "id": "tacz:extended_mag",
+      "name": "tacz.type.extended_mag.name",
+      "icon": {
+        "item": "tacz:attachment",
+        "nbt": {
+          "AttachmentId": "applied_armorer:extended_mag_aa_3"
+        }
+      }
+    },
+    {
+      "id": "tacz:grip",
+      "name": "tacz.type.grip.name",
+      "icon": {
+        "item": "tacz:attachment",
+        "nbt": {
+          "AttachmentId": "applied_armorer:grip_eazy"
+        }
+      }
+    },
+    {
+      "id": "tacz:muzzle",
+      "name": "tacz.type.muzzle.name",
+      "icon": {
+        "item": "tacz:attachment",
+        "nbt": {
+          "AttachmentId": "applied_armorer:muzzle_bs_mod4"
+        }
+      }
+    },
+    {
+      "id": "tacz:stock",
+      "name": "tacz.type.stock.name",
+      "icon": {
+        "item": "tacz:attachment",
+        "nbt": {
+          "AttachmentId": "applied_armorer:bracelet_aerial_wristband"
+        }
+      }
+    }
+  ]
+}
