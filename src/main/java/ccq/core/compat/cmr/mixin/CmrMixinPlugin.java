@@ -1,7 +1,6 @@
 package ccq.core.compat.cmr.mixin;
 
-import ccq.core.compat.cmr.CmrFixes;
-import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.LoadingModList;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -10,8 +9,6 @@ import java.util.List;
 import java.util.Set;
 
 public final class CmrMixinPlugin implements IMixinConfigPlugin {
-    private static final String MIXIN_PACKAGE = "ccq.core.compat.cmr.mixin.";
-
     @Override
     public void onLoad(String mixinPackage) {
     }
@@ -23,7 +20,12 @@ public final class CmrMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        return ModList.get().isLoaded("cmr") && ModList.get().isLoaded("create");
+        var loadingModList = LoadingModList.get();
+        if (loadingModList == null) {
+            return false;
+        }
+        return loadingModList.getModFileById("cmr") != null
+                && loadingModList.getModFileById("create") != null;
     }
 
     @Override

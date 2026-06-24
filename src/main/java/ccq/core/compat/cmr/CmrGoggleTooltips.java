@@ -1,5 +1,6 @@
 package ccq.core.compat.cmr;
 
+import ccq.core.CcqLang;
 import com.simibubi.create.foundation.utility.CreateLang;
 import fr.iglee42.cmr.blockspout.BlockSpoutBlockEntity;
 import fr.iglee42.cmr.cooler.SnowmanCoolerBlock;
@@ -27,22 +28,22 @@ public final class CmrGoggleTooltips {
         boolean creative = cooler.isCreative();
 
         if (heat == SnowmanCoolerBlock.HeatLevel.IDLE && burnTime <= 0 && !creative) {
-            CreateLang.translate("ccq_core.goggles.snowman_cooler.idle")
+            CcqLang.translate("goggles.snowman_cooler.idle")
                     .style(ChatFormatting.GRAY)
                     .forGoggles(tooltip);
             return true;
         }
 
-        CreateLang.translate("ccq_core.goggles.snowman_cooler.status")
+        CcqLang.translate("goggles.snowman_cooler.status")
                 .style(ChatFormatting.WHITE)
                 .forGoggles(tooltip);
 
-        CreateLang.translate("ccq_core.goggles.snowman_cooler.heat." + heat.getSerializedName())
+        CcqLang.translate("goggles.snowman_cooler.heat." + heat.getSerializedName())
                 .style(ChatFormatting.GRAY)
                 .forGoggles(tooltip, 1);
 
         if (creative) {
-            CreateLang.translate("ccq_core.goggles.snowman_cooler.creative")
+            CcqLang.translate("goggles.snowman_cooler.creative")
                     .style(ChatFormatting.LIGHT_PURPLE)
                     .forGoggles(tooltip, 1);
         } else if (burnTime > 0) {
@@ -54,7 +55,7 @@ public final class CmrGoggleTooltips {
 
         SnowmanCoolerBlockEntity.FuelType fuel = cooler.getActiveFuel();
         if (fuel != SnowmanCoolerBlockEntity.FuelType.NONE) {
-            CreateLang.translate("ccq_core.goggles.snowman_cooler.fuel." + fuel.name().toLowerCase())
+            CcqLang.translate("goggles.snowman_cooler.fuel." + fuel.name().toLowerCase())
                     .style(ChatFormatting.GREEN)
                     .forGoggles(tooltip, 1);
         }
@@ -70,7 +71,7 @@ public final class CmrGoggleTooltips {
             return false;
         }
 
-        CreateLang.translate("ccq_core.goggles.block_spout.processing")
+        CcqLang.translate("goggles.block_spout.processing")
                 .style(ChatFormatting.WHITE)
                 .forGoggles(tooltip);
 

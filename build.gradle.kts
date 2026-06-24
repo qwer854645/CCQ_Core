@@ -1,3 +1,5 @@
+import java.security.MessageDigest
+
 plugins {
     java
     id("net.neoforged.moddev") version "1.0.21"
@@ -64,6 +66,14 @@ dependencies {
         compileOnly(files(jadeJar))
     }
 
+    val capgVersion = property("capg_version") as String
+    val capgJar = file("libs/createaerophysicsgantry-$capgVersion.jar")
+    if (capgJar.exists()) {
+        "additionalRuntimeClasspath"(files(capgJar))
+    } else {
+        logger.warn("Missing ${capgJar.name}; ccq_core will not embed Create Aeronautics Physics Gantry.")
+    }
+
     testImplementation("com.google.code.gson:gson:2.11.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
     testImplementation("org.slf4j:slf4j-simple:2.0.16")
@@ -76,4 +86,51 @@ tasks.test {
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
+}
+
+val capgVersion = providers.gradleProperty("capg_version")
+val capgJarFile = capgVersion.map { file("libs/createaerophysicsgantry-$it.jar") }
+
+val generateCapgJarJarMetadata = tasks.register("generateCapgJarJarMetadata") {
+    val capgJar = capgJarFile.get()
+    onlyIf { capgJar.exists() }
+
+    val metadataDir = layout.buildDirectory.dir("generated/capg-jarjar/META-INF/jarjar")
+    outputs.dir(metadataDir)
+
+    doLast {
+        val digest = MessageDigest.getInstance("MD5").digest(capgJar.readBytes())
+        val md5Version = digest.joinToString("") { "%02x".format(it) }
+        val embeddedName = capgJar.name
+        val metadata = """
+            {
+              "jars": [
+                {
+                  "identifier": {
+                    "group": "",
+                    "artifact": "${embeddedName.removeSuffix(".jar")}"
+                  },
+                  "version": {
+                    "range": "[$md5Version,)",
+                    "artifactVersion": "$md5Version"
+                  },
+                  "path": "META-INF/jarjar/$embeddedName",
+                  "isObfuscated": false
+                }
+              ]
+            }
+        """.trimIndent()
+
+        val outDir = metadataDir.get().asFile
+        outDir.mkdirs()
+        File(outDir, "metadata.json").writeText(metadata)
+        capgJar.copyTo(File(outDir, embeddedName), overwrite = true)
+    }
+}
+
+tasks.named<Jar>("jar") {
+    if (capgJarFile.get().exists()) {
+        dependsOn(generateCapgJarJarMetadata)
+        from(layout.buildDirectory.dir("generated/capg-jarjar"))
+    }
 }

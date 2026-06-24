@@ -4,10 +4,10 @@ license = "MIT"
 
 [[mods]]
 modId = "ccq_core"
-version = "0.4.14"
+version = "0.4.17"
 displayName = "CCQ Core"
 authors = "CCQ"
-description = "CCQ modpack core utilities: AE2 Ponder props, embedded Dinar's Crafts Additions resource pack (MIT, Din37r), runtime TACZ gun pack stripping, and Applied Armorer workbench integration."
+description = "CCQ modpack core: AE2 Ponder props, embedded Dinar's Crafts Additions resource pack, TACZ gun pack utilities, and bundled Create Aeronautics Physics Gantry (CAPG 1.0.2)."
 
 [[dependencies.ccq_core]]
 modId = "neoforge"
@@ -25,9 +25,30 @@ side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "create"
-mandatory = false
-versionRange = "[6.0.0,)"
-ordering = "NONE"
+mandatory = true
+versionRange = "[6.0.10,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "aeronautics_bundled"
+mandatory = true
+versionRange = "[1.2.1,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "sable"
+mandatory = true
+versionRange = "[2.0.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "sablecompanion"
+mandatory = true
+versionRange = "[1.0.0,)"
+ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ccq_core]]

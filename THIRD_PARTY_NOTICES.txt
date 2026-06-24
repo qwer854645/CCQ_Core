@@ -1,6 +1,21 @@
 Third-Party Content — ccq_core
 ================================
 
+Create Aeronautics Physics Gantry (embedded mod jar)
+----------------------------------------------------
+
+  Embedded in ccq_core via Jar-in-Jar as createaerophysicsgantry-1.0.2.jar.
+
+  Author:  blorbee (blorbee1)
+  License: MIT License
+  Source:  https://github.com/blorbee1/createaerophysicsgantry
+  Release: https://github.com/blorbee1/createaerophysicsgantry/releases/tag/v1.0.2-1.12.1
+
+  Adds Physics Gantry Shaft, Physics Gantry Carriage, and Belt Wheel for
+  Create Aeronautics. Loads as mod id createaerophysicsgantry at runtime.
+
+  Do not also place a separate createaerophysicsgantry jar in the mods folder.
+
 Dinar's Crafts Additions (resource pack, embedded)
 --------------------------------------------------
 
