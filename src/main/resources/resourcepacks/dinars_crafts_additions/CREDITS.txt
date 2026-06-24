@@ -1,0 +1,7 @@
+Dinar's Crafts Additions v2.1
+Author: Din37r
+License: MIT License
+Download: https://modrinth.com/resourcepack/dinars-crafts-additions
+
+Bundled in ccq_core for Create Crafts & Additions (createaddition).
+See THIRD_PARTY_NOTICES.txt in the ccq_core repository for the full MIT license text.

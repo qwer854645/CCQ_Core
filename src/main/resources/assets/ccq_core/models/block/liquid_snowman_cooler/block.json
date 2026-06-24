@@ -1,0 +1,11 @@
+{
+  "parent": "block/block",
+  "loader": "neoforge:obj",
+  "render_type": "minecraft:cutout_mipped",
+  "flip_v": true,
+  "model": "create:models/block/blaze_burner/blaze_cage.obj",
+  "textures": {
+    "0": "ccq_core:block/snowman_cooler_brazier",
+    "particle": "create:block/dark_metal_block"
+  }
+}

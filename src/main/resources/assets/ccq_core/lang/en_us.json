@@ -1,4 +1,5 @@
 ﻿{
+  "block.ccq_core.liquid_snowman_cooler": "Liquid Snowman Cooler",
   "block.ccq_core.ponder_glass_cable": "Ponder Glass Cable",
   "block.ccq_core.ponder_covered_cable": "Ponder Covered Cable",
   "block.ccq_core.ponder_smart_cable": "Ponder Smart Cable",
@@ -20,5 +21,22 @@
   "block.ccq_core.ponder_annihilation_plane": "Ponder Annihilation Plane",
   "block.ccq_core.ponder_formation_plane": "Ponder Formation Plane",
   "block.ccq_core.ponder_pattern_access_terminal": "Ponder Pattern Access Terminal",
-  "block.ccq_core.ponder_quartz_fiber": "Ponder Quartz Fiber"
+  "block.ccq_core.ponder_quartz_fiber": "Ponder Quartz Fiber",
+  "resourcepack.ccq_core.dinars_crafts_additions": "Dinar's Crafts Additions (CCA)",
+  "message.ccq_core.snowman_straw_installed": "Snowman cooler now accepts piped liquid coolants",
+  "ccq_core.jade.snowman_cooler.burn_time": "Remaining cooling: %s ticks",
+  "ccq_core.jade.snowman_cooler.heat.fading": "Cooling (fading)",
+  "ccq_core.jade.snowman_cooler.heat.cooling": "Cooling",
+  "ccq_core.jade.snowman_cooler.heat.freezing": "Freezing",
+  "ccq_core.goggles.snowman_cooler.status": "Snowman Cooler Status:",
+  "ccq_core.goggles.snowman_cooler.idle": "No active cooling",
+  "ccq_core.goggles.snowman_cooler.creative": "Creative mode — infinite cooling",
+  "ccq_core.goggles.snowman_cooler.heat.idle": "Idle",
+  "ccq_core.goggles.snowman_cooler.heat.fading": "Cooling (fading)",
+  "ccq_core.goggles.snowman_cooler.heat.cooling": "Cooling",
+  "ccq_core.goggles.snowman_cooler.heat.freezing": "Freezing",
+  "ccq_core.goggles.snowman_cooler.fuel.none": "No fuel",
+  "ccq_core.goggles.snowman_cooler.fuel.normal": "Regular coolant",
+  "ccq_core.goggles.snowman_cooler.fuel.special": "Special coolant",
+  "ccq_core.goggles.block_spout.processing": "Block Spout Progress:"
 }

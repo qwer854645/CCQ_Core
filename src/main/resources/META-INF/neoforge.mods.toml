@@ -4,10 +4,10 @@ license = "MIT"
 
 [[mods]]
 modId = "ccq_core"
-version = "0.3.8"
+version = "0.4.14"
 displayName = "CCQ Core"
 authors = "CCQ"
-description = "CCQ modpack core utilities: AE2 Ponder props, runtime TACZ default gun pack stripping, and Applied Armorer workbench integration."
+description = "CCQ modpack core utilities: AE2 Ponder props, embedded Dinar's Crafts Additions resource pack (MIT, Din37r), runtime TACZ gun pack stripping, and Applied Armorer workbench integration."
 
 [[dependencies.ccq_core]]
 modId = "neoforge"
@@ -17,15 +17,46 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
-modId = "ae2"
-mandatory = true
-versionRange = "[19.2.17,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.ccq_core]]
 modId = "tacz"
 mandatory = false
 versionRange = "[1.1.0,)"
 ordering = "BEFORE"
 side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "create"
+mandatory = false
+versionRange = "[6.0.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "createaddition"
+mandatory = false
+versionRange = "[1.0.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "cmr"
+mandatory = false
+versionRange = "[1.0.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "jei"
+mandatory = false
+versionRange = "[19.0.0,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.ccq_core]]
+modId = "jade"
+mandatory = false
+versionRange = "[15.0.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[mixins]]
+config = "ccq_core.mixins.json"

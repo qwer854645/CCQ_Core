@@ -1,4 +1,5 @@
 ﻿{
+  "block.ccq_core.liquid_snowman_cooler": "液体雪人冷却室",
   "block.ccq_core.ponder_glass_cable": "思索玻璃线缆",
   "block.ccq_core.ponder_covered_cable": "思索包层线缆",
   "block.ccq_core.ponder_smart_cable": "思索智能线缆",
@@ -20,5 +21,22 @@
   "block.ccq_core.ponder_annihilation_plane": "思索破坏平面",
   "block.ccq_core.ponder_formation_plane": "思索成型平面",
   "block.ccq_core.ponder_pattern_access_terminal": "思索样板访问终端",
-  "block.ccq_core.ponder_quartz_fiber": "思索石英纤维"
+  "block.ccq_core.ponder_quartz_fiber": "思索石英纤维",
+  "resourcepack.ccq_core.dinars_crafts_additions": "Dinar 的 CCA 材质包 v2.1",
+  "message.ccq_core.snowman_straw_installed": "雪人冷却室已安装吸管，可用管道输送液体冷却剂",
+  "ccq_core.jade.snowman_cooler.burn_time": "剩余冷却：%s tick",
+  "ccq_core.jade.snowman_cooler.heat.fading": "冷却衰减中",
+  "ccq_core.jade.snowman_cooler.heat.cooling": "冷却中",
+  "ccq_core.jade.snowman_cooler.heat.freezing": "冰冻中",
+  "ccq_core.goggles.snowman_cooler.status": "雪人冷却室状态：",
+  "ccq_core.goggles.snowman_cooler.idle": "当前无冷却",
+  "ccq_core.goggles.snowman_cooler.creative": "创造模式 — 无限冷却",
+  "ccq_core.goggles.snowman_cooler.heat.idle": "空闲",
+  "ccq_core.goggles.snowman_cooler.heat.fading": "冷却衰减中",
+  "ccq_core.goggles.snowman_cooler.heat.cooling": "冷却中",
+  "ccq_core.goggles.snowman_cooler.heat.freezing": "冰冻中",
+  "ccq_core.goggles.snowman_cooler.fuel.none": "无燃料",
+  "ccq_core.goggles.snowman_cooler.fuel.normal": "普通冷却剂",
+  "ccq_core.goggles.snowman_cooler.fuel.special": "特殊冷却剂",
+  "ccq_core.goggles.block_spout.processing": "方块喷注进度："
 }

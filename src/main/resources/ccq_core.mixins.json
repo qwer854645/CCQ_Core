@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "ccq.core.compat.cmr.mixin",
+  "plugin": "ccq.core.compat.cmr.mixin.CmrMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "SnowmanCoolerBlockEntityMixin",
+    "BlockSpoutBlockEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

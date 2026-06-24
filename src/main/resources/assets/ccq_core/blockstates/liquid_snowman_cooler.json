@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "ccq_core:block/liquid_snowman_cooler/block"
+    }
+  }
+}

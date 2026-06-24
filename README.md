@@ -5,10 +5,10 @@ Create Craft & Quiet（CCQ）整合包的核心辅助 Mod，提供 AE2 教程用
 | 项目 | 说明 |
 |------|------|
 | Mod ID | `ccq_core` |
-| 版本 | 0.3.8 |
+| 版本 | 0.4.1 |
 | Minecraft | 1.21.1 |
 | 加载器 | NeoForge 21.1+ |
-| 许可证 | [MIT](LICENSE)（源码）；运行时枪包素材见 [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt) |
+| 许可证 | [MIT](LICENSE)（源码）；嵌入的 CCA 材质包及运行时枪包素材见 [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt) |
 | 仓库 | https://github.com/qwer854645/CCQ_Core |
 
 ## 依赖
@@ -16,14 +16,15 @@ Create Craft & Quiet（CCQ）整合包的核心辅助 Mod，提供 AE2 教程用
 | Mod | 必需 | 说明 |
 |-----|------|------|
 | NeoForge | 是 | 21.1 及以上 |
-| Applied Energistics 2 | 是 | 19.2.17 及以上 |
 | [Timeless and Classics Zero (TaCZ)](https://www.curseforge.com/minecraft/mc-mods/timeless-and-classics-zero) | 否 | 未安装时跳过枪包相关功能 |
+| Create Crafts & Additions | 否 | 安装后自动启用内置 CCA 材质包 |
+| Applied Energistics 2 | 否 | **未在 mod 元数据中声明依赖**；安装后才会注册思索装饰方块（模型引用 AE2 资源） |
 
 ## 功能
 
 ### 1. AE2 思索装饰方块（Ponder Props）
 
-注册一组**纯装饰**方块，外观仿照 AE2 线缆与 ME 设备，用于 Ponder 教程、建筑展示或整合包任务场景。
+注册一组**纯装饰**方块，外观仿照 AE2 线缆与 ME 设备，用于 Ponder 教程、建筑展示或整合包任务场景。**仅当 AE2 已安装时注册**；未安装 AE2 时 Mod 仍可正常加载，仅跳过思索方块。
 
 - **无实际功能**：不可接入 ME 网络，不参与物流或合成
 - **不可破坏掉落**：无战利品表，适合作为教程专用方块
@@ -38,7 +39,33 @@ Create Craft & Quiet（CCQ）整合包的核心辅助 Mod，提供 AE2 教程用
 
 方块 ID 均以 `ccq_core:ponder_` 为前缀，可通过 `/give` 或创造模式物品栏获取（若整合包配置了获取方式）。
 
-### 2. CCQ 默认枪包（`ccq_default_gun`）
+### 2. CCA 材质包（Dinar's Crafts Additions）
+
+内置 **[Dinar's Crafts Additions v2.1](https://modrinth.com/resourcepack/dinars-crafts-additions)** 资源包（`createaddition` 模型/贴图替换）。**仅当 Create Crafts & Additions（`createaddition`）已安装时**，客户端启动会自动启用该包，无需手动在资源包列表中勾选。
+
+| 项目 | 说明 |
+|------|------|
+| 作者 | [Din37r](https://modrinth.com/resourcepack/dinars-crafts-additions) |
+| 协议 | [MIT License](https://modrinth.com/resourcepack/dinars-crafts-additions) |
+| 来源 | https://modrinth.com/resourcepack/dinars-crafts-additions |
+| 内置版本 | v2.1 |
+
+> 该材质包以 MIT 协议随 ccq_core 分发；完整授权说明见 [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt)。
+
+### 3. 雪人冷却室 × CCA 吸管兼容
+
+当 **Create More Recipes（`cmr`）** 与 **Create Crafts & Additions（`createaddition`）** 同时安装时：
+
+1. 用 `createaddition:straw` **右键** `cmr:snowman_cooler` → 变为 `ccq_core:liquid_snowman_cooler`（与 CCA 液体烈焰人同理，是**新方块**）
+2. 液体版**只接受管道液体**，不再吃固体燃料
+3. **破坏**液体雪人冷却室 → 掉落 `cmr:snowman_cooler` + `createaddition:straw`
+
+| 液体标签 | 默认成员 | 冷却等级 | 每桶（1000 mB）时长 |
+|----------|----------|----------|---------------------|
+| `#ccq_core:liquid_cooling_regular` | `minecraft:water` | COOLING | 1600 tick |
+| `#ccq_core:liquid_cooling_special` | `ccq_core:cooling_liquid` | FREEZING | 3200 tick |
+
+### 4. CCQ 默认枪包（`ccq_default_gun`）
 
 **不在 Mod 内嵌任何 TACZ 默认枪包文件。** 当 TaCZ 已加载时，Mod 会在启动阶段按以下顺序处理：
 
@@ -58,7 +85,7 @@ Create Craft & Quiet（CCQ）整合包的核心辅助 Mod，提供 AE2 教程用
 
 > 素材源自玩家本地已安装的 TACZ Default Gun Pack（CC BY-NC-ND 4.0）。详见 [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt)。
 
-### 3. Applied Armorer 枪械终端补丁
+### 5. Applied Armorer 枪械终端补丁
 
 **不内置 Applied Armorer 枪包本体。** 仅当玩家已在 `.minecraft/tacz/` 中安装 Applied Armorer（zip 或解压文件夹）时，Mod 会在启动阶段自动写入枪械终端（Guns Terminal）的 `tabs` 配置。
 
@@ -126,6 +153,7 @@ src/test/java/ccq/core/tacz/     # 枪包逻辑单元测试
 
 src/main/resources/
 ├── META-INF/neoforge.mods.toml
+├── resourcepacks/dinars_crafts_additions/  # Dinar's Crafts Additions v2.1 (MIT, Din37r)
 └── assets/ccq_core/             # 模型、方块状态、语言文件
 ```
 
@@ -144,7 +172,7 @@ src/main/resources/
 
 本仓库源代码与编译产物 `ccq_core` Mod JAR 采用 [MIT License](LICENSE)。
 
-Mod 运行时可能从玩家本地已安装的 TaCZ / Applied Armorer 枪包读取或改写文件；相关素材版权与限制见 [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt)，不受 MIT 覆盖。
+Mod JAR 内嵌 **Dinar's Crafts Additions** 资源包（作者 Din37r，[MIT](https://modrinth.com/resourcepack/dinars-crafts-additions)）。运行时还可能从玩家本地已安装的 TaCZ / Applied Armorer 枪包读取或改写文件；相关素材版权与限制见 [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt)，不受 ccq_core 源码 MIT 覆盖。
 
 ## 第三方内容
 
