@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ccq_core:item/ore_vein_scanner"
+  }
+}

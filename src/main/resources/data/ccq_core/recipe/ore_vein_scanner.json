@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "create:brass_sheet"
+    },
+    "c": {
+      "item": "minecraft:recovery_compass"
+    },
+    "e": {
+      "item": "create:electron_tube"
+    },
+    "g": {
+      "tag": "c:gems/amethyst"
+    }
+  },
+  "pattern": [
+    "geg",
+    "bcb",
+    " b "
+  ],
+  "result": {
+    "count": 1,
+    "id": "ccq_core:ore_vein_scanner"
+  }
+}

@@ -3,6 +3,7 @@ package ccq.core;
 import ccq.core.compat.cmr.CmrCcaCompat;
 import ccq.core.compat.cmr.CmrFixes;
 import ccq.core.compat.cmr.CmrSnowmanCapabilities;
+import ccq.core.compat.coe.CoeCompat;
 import ccq.core.resourcepack.CcaResourcePackBootstrap;
 import ccq.core.tacz.CcqGunPackBootstrap;
 import net.neoforged.bus.api.IEventBus;
@@ -23,5 +24,6 @@ public class CcqCoreMod {
         CmrFixes.register(modEventBus);
         CmrCcaCompat.register(modEventBus);
         CmrSnowmanCapabilities.register(modEventBus);
+        CoeCompat.register(modEventBus);
     }
 }

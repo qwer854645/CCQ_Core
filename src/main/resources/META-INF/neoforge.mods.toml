@@ -4,7 +4,7 @@ license = "MIT"
 
 [[mods]]
 modId = "ccq_core"
-version = "0.4.17"
+version = "${mod_version}"
 displayName = "CCQ Core"
 authors = "CCQ"
 description = "CCQ modpack core: AE2 Ponder props, embedded Dinar's Crafts Additions resource pack, TACZ gun pack utilities, and bundled Create Aeronautics Physics Gantry (CAPG 1.0.2)."
@@ -77,6 +77,13 @@ modId = "jade"
 mandatory = false
 versionRange = "[15.0.0,)"
 ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "createoreexcavation"
+mandatory = false
+versionRange = "[1.0.0,)"
+ordering = "AFTER"
 side = "BOTH"
 
 [[mixins]]

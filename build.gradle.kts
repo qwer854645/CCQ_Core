@@ -5,6 +5,8 @@ plugins {
     id("net.neoforged.moddev") version "1.0.21"
 }
 
+version = project.property("mod_version") as String
+
 base {
     archivesName.set("ccq_core")
 }
@@ -66,6 +68,11 @@ dependencies {
         compileOnly(files(jadeJar))
     }
 
+    val coeJar = file("libs/createoreexcavation-1.21-1.6.8.jar")
+    if (coeJar.exists()) {
+        compileOnly(files(coeJar))
+    }
+
     val capgVersion = property("capg_version") as String
     val capgJar = file("libs/createaerophysicsgantry-$capgVersion.jar")
     if (capgJar.exists()) {
@@ -86,6 +93,12 @@ tasks.test {
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
+}
+
+tasks.named<ProcessResources>("processResources") {
+    filesMatching("META-INF/neoforge.mods.toml") {
+        expand(mapOf("mod_version" to project.version))
+    }
 }
 
 val capgVersion = providers.gradleProperty("capg_version")
