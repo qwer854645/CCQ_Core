@@ -2,6 +2,7 @@ package ccq.core.compat.coe.network;
 
 import ccq.core.CcqCoreMod;
 import ccq.core.compat.coe.CoeClientNetwork;
+import ccq.core.compat.coe.CoeCompat;
 import ccq.core.compat.coe.OreVeinScanEntry;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -39,6 +40,11 @@ public record OreVeinScanResultsPayload(
     }
 
     public static void handle(OreVeinScanResultsPayload payload, net.neoforged.neoforge.network.handling.IPayloadContext context) {
-        context.enqueueWork(() -> CoeClientNetwork.handleScanResults(payload));
+        context.enqueueWork(() -> {
+            if (!CoeCompat.isEnabled()) {
+                return;
+            }
+            CoeClientNetwork.handleScanResults(payload);
+        });
     }
 }

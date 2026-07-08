@@ -15,6 +15,8 @@ public final class CoeCompat {
     }
 
     public static void register(IEventBus modEventBus) {
+        modEventBus.addListener(CoeNetwork::register);
+
         enabled = ModList.get().isLoaded("createoreexcavation") && ModList.get().isLoaded("create");
         if (!enabled) {
             CcqCoreMod.LOGGER.info("Create Ore Excavation not loaded; skipping ore vein scanner.");
@@ -23,7 +25,6 @@ public final class CoeCompat {
 
         CoeItems.ITEMS.register(modEventBus);
         CoeMenus.MENUS.register(modEventBus);
-        modEventBus.addListener(CoeNetwork::register);
         CcqCoreMod.LOGGER.info("Create Ore Excavation compatibility enabled.");
     }
 }

@@ -28,6 +28,7 @@
   "ccq_core.jade.snowman_cooler.heat.fading": "冷却衰减中",
   "ccq_core.jade.snowman_cooler.heat.cooling": "冷却中",
   "ccq_core.jade.snowman_cooler.heat.freezing": "冰冻中",
+  "config.jade.plugin_ccq_core.snowman_cooler": "雪人冷却室",
   "ccq_core.goggles.snowman_cooler.status": "雪人冷却室状态：",
   "ccq_core.goggles.snowman_cooler.idle": "当前无冷却",
   "ccq_core.goggles.snowman_cooler.creative": "创造模式 — 无限冷却",
@@ -59,5 +60,7 @@
   "gui.ccq_core.ore_vein_scanner.kind.nearby": "附近",
   "gui.ccq_core.ore_vein_scanner.kind.distant": "远处",
   "gui.ccq_core.ore_vein_scanner.infinite": "无限",
-  "gui.ccq_core.ore_vein_scanner.finite": "剩余 %s"
+  "gui.ccq_core.ore_vein_scanner.finite": "剩余 %s",
+  "jei.ccq_core.ore_vein_scanner": "右键打开扫描界面。选择矿脉类型后点击开始扫描，可在后台完成大范围矿脉探测。",
+  "jei.ccq_core.ore_vein_scanner.range": "扫描半径：%s 格"
 }

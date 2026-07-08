@@ -44,6 +44,9 @@ public final class CoeNetwork {
     }
 
     public static void handleScanRequest(OreVeinScanRequestPayload payload, IPayloadContext context) {
+        if (!CoeCompat.isEnabled()) {
+            return;
+        }
         if (!(context.player() instanceof ServerPlayer serverPlayer)) {
             return;
         }

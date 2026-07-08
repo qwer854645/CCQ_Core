@@ -1,8 +1,8 @@
 package ccq.core.compat.coe;
 
-final class CoeScannerConfig {
+public final class CoeScannerConfig {
     /** Chunk radius around the player (64 chunks ≈ 1024 blocks). */
-    static final int CHUNK_RADIUS = 64;
+    public static final int CHUNK_RADIUS = 64;
 
     /** Chunks within this radius are labeled as "nearby"; beyond that as "distant". */
     static final int NEARBY_CHUNK_RADIUS = 8;

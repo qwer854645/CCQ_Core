@@ -28,6 +28,7 @@
   "ccq_core.jade.snowman_cooler.heat.fading": "Cooling (fading)",
   "ccq_core.jade.snowman_cooler.heat.cooling": "Cooling",
   "ccq_core.jade.snowman_cooler.heat.freezing": "Freezing",
+  "config.jade.plugin_ccq_core.snowman_cooler": "Snowman Cooler",
   "ccq_core.goggles.snowman_cooler.status": "Snowman Cooler Status:",
   "ccq_core.goggles.snowman_cooler.idle": "No active cooling",
   "ccq_core.goggles.snowman_cooler.creative": "Creative mode — infinite cooling",
@@ -59,5 +60,7 @@
   "gui.ccq_core.ore_vein_scanner.kind.nearby": "Nearby",
   "gui.ccq_core.ore_vein_scanner.kind.distant": "Distant",
   "gui.ccq_core.ore_vein_scanner.infinite": "Infinite",
-  "gui.ccq_core.ore_vein_scanner.finite": "%s remaining"
+  "gui.ccq_core.ore_vein_scanner.finite": "%s remaining",
+  "jei.ccq_core.ore_vein_scanner": "Right-click to open the scanner. Choose a vein type, then press Scan to survey veins in the background.",
+  "jei.ccq_core.ore_vein_scanner.range": "Scan radius: %s blocks"
 }
