@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -51,6 +53,99 @@ final class GunPackFileOperations {
         for (String relativePath : keepFiles) {
             copyRelativeFile(sourceRoot, targetRoot, relativePath);
         }
+    }
+
+    static void copyKeepPrefixesFromDirectory(Path sourceRoot, Path targetRoot, List<String> keepPrefixes) throws IOException {
+        Set<String> pendingPrefixes = normalizeKeepPrefixes(keepPrefixes);
+        Files.walkFileTree(sourceRoot, new SimpleFileVisitor<>() {
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                String relativePath = normalizeEntryPath(sourceRoot.relativize(file).toString());
+                if (!matchesKeepPrefix(relativePath, pendingPrefixes)) {
+                    return FileVisitResult.CONTINUE;
+                }
+
+                writeRelativeBytes(targetRoot, relativePath, Files.readAllBytes(file));
+                return FileVisitResult.CONTINUE;
+            }
+        });
+
+        verifyCopiedPrefixes(targetRoot, pendingPrefixes);
+    }
+
+    static void copyKeepPrefixesFromPrefixedDirectory(
+            Path sourceRoot,
+            String entryPrefix,
+            Path targetRoot,
+            List<String> keepPrefixes
+    ) throws IOException {
+        String normalizedPrefix = normalizeEntryPath(entryPrefix);
+        if (!normalizedPrefix.isEmpty() && !normalizedPrefix.endsWith("/")) {
+            normalizedPrefix = normalizedPrefix + "/";
+        }
+
+        Set<String> pendingPrefixes = normalizeKeepPrefixes(keepPrefixes);
+        Path searchRoot = normalizedPrefix.isEmpty() ? sourceRoot : sourceRoot.resolve(normalizedPrefix);
+        if (!Files.isDirectory(searchRoot)) {
+            throw new IOException("Missing gun pack directory: " + searchRoot);
+        }
+
+        Files.walkFileTree(searchRoot, new SimpleFileVisitor<>() {
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                String relativePath = normalizeEntryPath(searchRoot.relativize(file).toString());
+                if (!matchesKeepPrefix(relativePath, pendingPrefixes)) {
+                    return FileVisitResult.CONTINUE;
+                }
+
+                writeRelativeBytes(targetRoot, relativePath, Files.readAllBytes(file));
+                return FileVisitResult.CONTINUE;
+            }
+        });
+
+        verifyCopiedPrefixes(targetRoot, pendingPrefixes);
+    }
+
+    static void copyKeepPrefixesFromZip(Path zipPath, Path targetRoot, List<String> keepPrefixes) throws IOException {
+        copyKeepPrefixesFromPrefixedZip(zipPath, "", targetRoot, keepPrefixes);
+    }
+
+    static void copyKeepPrefixesFromPrefixedZip(
+            Path zipPath,
+            String entryPrefix,
+            Path targetRoot,
+            List<String> keepPrefixes
+    ) throws IOException {
+        Set<String> pendingPrefixes = normalizeKeepPrefixes(keepPrefixes);
+        String normalizedPrefix = normalizeEntryPath(entryPrefix);
+        if (!normalizedPrefix.isEmpty() && !normalizedPrefix.endsWith("/")) {
+            normalizedPrefix = normalizedPrefix + "/";
+        }
+
+        try (ZipInputStream zipInput = new ZipInputStream(Files.newInputStream(zipPath))) {
+            ZipEntry entry;
+            while ((entry = zipInput.getNextEntry()) != null) {
+                if (entry.isDirectory()) {
+                    continue;
+                }
+
+                String normalizedName = normalizeEntryPath(entry.getName());
+                if (!normalizedPrefix.isEmpty() && !normalizedName.startsWith(normalizedPrefix)) {
+                    continue;
+                }
+
+                String relativePath = normalizedPrefix.isEmpty()
+                        ? normalizedName
+                        : normalizedName.substring(normalizedPrefix.length());
+                if (!matchesKeepPrefix(relativePath, pendingPrefixes)) {
+                    continue;
+                }
+
+                writeRelativeBytes(targetRoot, relativePath, zipInput.readAllBytes());
+            }
+        }
+
+        verifyCopiedPrefixes(targetRoot, pendingPrefixes);
     }
 
     static void copyKeepListFromPrefixedZip(Path zipPath, String entryPrefix, Path targetRoot, List<String> keepFiles) throws IOException {
@@ -179,5 +274,49 @@ final class GunPackFileOperations {
 
     private static String normalizeEntryPath(String entryPath) {
         return entryPath.replace('\\', '/');
+    }
+
+    private static Set<String> normalizeKeepPrefixes(List<String> keepPrefixes) {
+        Set<String> normalized = new HashSet<>();
+        for (String keepPrefix : keepPrefixes) {
+            String prefix = normalizeEntryPath(keepPrefix);
+            if (!prefix.endsWith("/")) {
+                prefix = prefix + "/";
+            }
+            normalized.add(prefix);
+        }
+        return normalized;
+    }
+
+    private static boolean matchesKeepPrefix(String relativePath, Set<String> keepPrefixes) {
+        for (String keepPrefix : keepPrefixes) {
+            if (relativePath.startsWith(keepPrefix)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void verifyCopiedPrefixes(Path targetRoot, Set<String> keepPrefixes) throws IOException {
+        List<String> missingPrefixes = new ArrayList<>();
+        for (String prefix : keepPrefixes) {
+            if (!hasFilesUnderPrefix(targetRoot, prefix)) {
+                missingPrefixes.add(prefix);
+            }
+        }
+        if (!missingPrefixes.isEmpty()) {
+            throw new IOException("Gun pack is missing required prefix entries: " + String.join(", ", missingPrefixes));
+        }
+    }
+
+    private static boolean hasFilesUnderPrefix(Path targetRoot, String prefix) throws IOException {
+        Path prefixDir = targetRoot.resolve(prefix);
+        if (!Files.isDirectory(prefixDir)) {
+            return false;
+        }
+
+        try (var paths = Files.walk(prefixDir)) {
+            return paths.anyMatch(Files::isRegularFile);
+        }
     }
 }

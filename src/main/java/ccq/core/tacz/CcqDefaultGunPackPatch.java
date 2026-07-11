@@ -64,12 +64,24 @@ final class CcqDefaultGunPackPatch {
                         stagingDir,
                         CcqDefaultGunPackContent.KEEP_FILES
                 );
+                GunPackFileOperations.copyKeepPrefixesFromPrefixedZip(
+                        modRoot,
+                        CcqDefaultGunPackContent.MOD_JAR_PACK_PREFIX,
+                        stagingDir,
+                        CcqDefaultGunPackContent.KEEP_PREFIXES
+                );
             } else if (Files.isDirectory(modRoot)) {
                 GunPackFileOperations.copyKeepListFromPrefixedDirectory(
                         modRoot,
                         CcqDefaultGunPackContent.MOD_JAR_PACK_PREFIX,
                         stagingDir,
                         CcqDefaultGunPackContent.KEEP_FILES
+                );
+                GunPackFileOperations.copyKeepPrefixesFromPrefixedDirectory(
+                        modRoot,
+                        CcqDefaultGunPackContent.MOD_JAR_PACK_PREFIX,
+                        stagingDir,
+                        CcqDefaultGunPackContent.KEEP_PREFIXES
                 );
             } else {
                 throw new IOException("Unsupported tacz mod root: " + modRoot);
@@ -81,8 +93,10 @@ final class CcqDefaultGunPackPatch {
         publishStrippedPack(taczDir, outputDir, stagingDir -> {
             if (Files.isRegularFile(source)) {
                 GunPackFileOperations.copyKeepListFromZip(source, stagingDir, CcqDefaultGunPackContent.KEEP_FILES);
+                GunPackFileOperations.copyKeepPrefixesFromZip(source, stagingDir, CcqDefaultGunPackContent.KEEP_PREFIXES);
             } else {
                 GunPackFileOperations.copyKeepListFromDirectory(source, stagingDir, CcqDefaultGunPackContent.KEEP_FILES);
+                GunPackFileOperations.copyKeepPrefixesFromDirectory(source, stagingDir, CcqDefaultGunPackContent.KEEP_PREFIXES);
             }
         });
     }
@@ -160,6 +174,14 @@ final class CcqDefaultGunPackPatch {
         }
 
         if (!Files.isRegularFile(outputDir.resolve("assets/tacz/lang/zh_cn.json"))) {
+            return false;
+        }
+
+        if (!Files.isRegularFile(outputDir.resolve(CcqDefaultGunPackContent.SHARED_SOUND_MARKER))) {
+            return false;
+        }
+
+        if (!Files.isRegularFile(outputDir.resolve(CcqDefaultGunPackContent.AK47_SHARED_SOUND_MARKER))) {
             return false;
         }
 

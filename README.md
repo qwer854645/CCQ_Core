@@ -121,7 +121,7 @@ ccq_core 另提供 CAPG 的 **`zh_cn` 中文语言文件**（`assets/createaerop
 2. 若 `tacz/` 下已有 `tacz_default_gun/` 或 `tacz_default_gun*.zip` → 从中复制白名单文件，输出为 `ccq_default_gun/`，然后删除原包
 3. 若本地没有默认枪包 → **从已安装的 TaCZ mod JAR**（`assets/tacz/custom/tacz_default_gun/`）提取白名单文件，直接生成 `ccq_default_gun/`
 
-保留 12 号霰弹、共享贴图、`default_state_machine.lua` 等第三方枪包依赖资源，并运行时生成 CCQ 元数据与语言文件。生成完成后会清除 GunsmithLib 对 `ccq_default_gun` / `tacz_default_gun` 的升级缓存。
+保留 12 号霰弹、共享音效（如 CZ75 / 弹匣落地声）、共享贴图、`default_state_machine.lua` 等第三方枪包依赖资源，并运行时生成 CCQ 元数据与语言文件。生成完成后会清除 GunsmithLib 对 `ccq_default_gun` / `tacz_default_gun` 的升级缓存。
 
 #### 启动时机
 

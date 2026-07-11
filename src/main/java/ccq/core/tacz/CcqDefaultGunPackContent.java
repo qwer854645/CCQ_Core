@@ -16,6 +16,13 @@ final class CcqDefaultGunPackContent {
     static final String SOURCE_ZIP_GLOB = "tacz_default_gun*.zip";
     static final String MOD_JAR_PACK_PREFIX = "assets/tacz/custom/tacz_default_gun";
     static final String PACK_META_ENTRY = "gunpack.meta.json";
+    static final List<String> KEEP_PREFIXES = List.of(
+            "assets/tacz/tacz_sounds/ak47/",
+            "assets/tacz/tacz_sounds/cz75/",
+            "assets/tacz/tacz_sounds/mag_drop_sound/"
+    );
+    static final String SHARED_SOUND_MARKER = "assets/tacz/tacz_sounds/cz75/cz75_reload_magin.ogg";
+    static final String AK47_SHARED_SOUND_MARKER = "assets/tacz/tacz_sounds/ak47/ak47_reload_magin.ogg";
     static final List<String> KEEP_FILES = List.of(
             PACK_META_ENTRY,
             "assets/tacz/display/ammo/12g_display.json",
@@ -55,7 +62,7 @@ final class CcqDefaultGunPackContent {
         root.addProperty("pack.tacz.ccq_default_gun.name", "CCQ Default Gun Pack");
         root.addProperty(
                 "pack.tacz.ccq_default_gun.desc",
-                "For Create Craft & Quiet: 12 gauge ammo and shared assets required by third-party gun packs. "
+                "For Create Craft & Quiet: 12 gauge ammo, shared sounds, and other assets required by third-party gun packs. "
                         + "Includes TACZ default pack materials under CC BY-NC-ND 4.0."
         );
         root.addProperty("tacz.type.ammo.name", "Ammo");
@@ -68,7 +75,7 @@ final class CcqDefaultGunPackContent {
         root.addProperty("pack.tacz.ccq_default_gun.name", "CCQ 精简枪包");
         root.addProperty(
                 "pack.tacz.ccq_default_gun.desc",
-                "Create Craft & Quiet 专用：仅保留 12 号霰弹与第三方枪包依赖的共享资源。含 TACZ 默认包素材，遵循 CC BY-NC-ND 4.0。"
+                "Create Craft & Quiet 专用：仅保留 12 号霰弹、共享音效与第三方枪包依赖的共享资源。含 TACZ 默认包素材，遵循 CC BY-NC-ND 4.0。"
         );
         root.addProperty("tacz.type.ammo.name", "子弹");
         root.addProperty("tacz.ammo.12g.name", "§912 号口径霰弹");
@@ -81,7 +88,7 @@ final class CcqDefaultGunPackContent {
                 ======================================
 
                 This folder was generated at runtime by ccq_core from an installed TACZ default gun pack.
-                It retains only 12 gauge ammo and shared assets required by third-party gun packs.
+                It retains only 12 gauge ammo, shared sounds, and other assets required by third-party gun packs.
 
                 Original materials are from the TACZ Default Gun Pack (TACZ Dev Team, CC BY-NC-ND 4.0).
                 Do not redistribute modified pack files without author permission.

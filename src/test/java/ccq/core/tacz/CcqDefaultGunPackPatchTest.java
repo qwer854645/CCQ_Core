@@ -34,6 +34,9 @@ class CcqDefaultGunPackPatchTest {
         assertTrue(Files.isRegularFile(outputDir.resolve("assets/tacz/scripts/default_state_machine.lua")));
         assertTrue(Files.isRegularFile(outputDir.resolve("assets/tacz/gunpack_info.json")));
         assertTrue(Files.isRegularFile(outputDir.resolve("NOTICE.txt")));
+        assertTrue(Files.isRegularFile(outputDir.resolve(CcqDefaultGunPackContent.SHARED_SOUND_MARKER)));
+        assertTrue(Files.isRegularFile(outputDir.resolve(CcqDefaultGunPackContent.AK47_SHARED_SOUND_MARKER)));
+        assertTrue(Files.isRegularFile(outputDir.resolve("assets/tacz/tacz_sounds/mag_drop_sound/mag_drop_pi_metal_dirt.ogg")));
     }
 
     @Test
@@ -47,6 +50,9 @@ class CcqDefaultGunPackPatchTest {
         assertTrue(Files.isRegularFile(outputDir.resolve("assets/tacz/scripts/default_state_machine.lua")));
         assertTrue(Files.isRegularFile(outputDir.resolve("assets/tacz/gunpack_info.json")));
         assertTrue(Files.isRegularFile(outputDir.resolve("NOTICE.txt")));
+        assertTrue(Files.isRegularFile(outputDir.resolve(CcqDefaultGunPackContent.SHARED_SOUND_MARKER)));
+        assertTrue(Files.isRegularFile(outputDir.resolve(CcqDefaultGunPackContent.AK47_SHARED_SOUND_MARKER)));
+        assertTrue(Files.isRegularFile(outputDir.resolve("assets/tacz/tacz_sounds/mag_drop_sound/mag_drop_pi_metal_dirt.ogg")));
         assertFalse(Files.exists(outputDir.resolve("data/tacz/index/guns")));
     }
 
