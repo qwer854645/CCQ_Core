@@ -1,5 +1,16 @@
 ﻿{
   "block.ccq_core.liquid_snowman_cooler": "Liquid Snowman Cooler",
+  "block.ccq_core.storage_bridge": "Storage Bridge",
+  "message.ccq_core.storage_bridge.linked": "Storage Bridge linked to Functional Storage controller",
+  "message.ccq_core.storage_bridge.unlinked": "Storage Bridge unlinked from Functional Storage controller",
+  "message.ccq_core.storage_bridge.no_controller": "Link a Functional Storage controller with the Linking Tool first",
+  "message.ccq_core.storage_bridge.bad_controller": "Linked controller is missing or invalid",
+  "message.ccq_core.storage_bridge.out_of_range": "Storage Bridge is out of controller range",
+  "message.ccq_core.storage_bridge.status": "FXNT: %s · Functional Storage: %s",
+  "message.ccq_core.storage_bridge.side_ok": "connected",
+  "message.ccq_core.storage_bridge.side_missing": "not found",
+  "tooltip.ccq_core.storage_bridge": "Lets FXNT and Functional Storage controllers see and use each other's inventories",
+
   "block.ccq_core.ponder_glass_cable": "Ponder Glass Cable",
   "block.ccq_core.ponder_covered_cable": "Ponder Covered Cable",
   "block.ccq_core.ponder_smart_cable": "Ponder Smart Cable",

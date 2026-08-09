@@ -92,6 +92,25 @@ dependencies {
         compileOnly(files(coeJar))
     }
 
+    val fxntJar = file("libs/fxntstorage-1.3.2.jar")
+    if (fxntJar.exists()) {
+        compileOnly(files(fxntJar))
+    } else {
+        logger.warn("Missing ${fxntJar.name}; storage bridge will not compile against FXNT Storage.")
+    }
+
+    val functionalStorageJar = file("libs/functionalstorage-1.21.1-1.5.8.jar")
+    if (functionalStorageJar.exists()) {
+        compileOnly(files(functionalStorageJar))
+    } else {
+        logger.warn("Missing ${functionalStorageJar.name}; storage bridge will not compile against Functional Storage.")
+    }
+
+    val titaniumJar = file("libs/titanium-1.21-4.0.43.jar")
+    if (titaniumJar.exists()) {
+        compileOnly(files(titaniumJar))
+    }
+
     val capgVersion = property("capg_version") as String
     val capgJar = file("libs/createaerophysicsgantry-$capgVersion.jar")
     if (capgJar.exists()) {

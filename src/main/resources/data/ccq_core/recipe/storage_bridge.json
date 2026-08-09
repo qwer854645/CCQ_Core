@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "fxntstorage"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "functionalstorage"
+    }
+  ],
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "create:andesite_casing"
+    },
+    "I": {
+      "item": "create:iron_sheet"
+    },
+    "B": {
+      "item": "create:brass_sheet"
+    }
+  },
+  "pattern": [
+    " I ",
+    "BCB",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "ccq_core:storage_bridge"
+  }
+}

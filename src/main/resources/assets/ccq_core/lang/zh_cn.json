@@ -1,5 +1,16 @@
 ﻿{
   "block.ccq_core.liquid_snowman_cooler": "液体雪人冷却室",
+  "block.ccq_core.storage_bridge": "存储桥接方块",
+  "message.ccq_core.storage_bridge.linked": "已链接到功能储物控制器",
+  "message.ccq_core.storage_bridge.unlinked": "已从功能储物控制器断开",
+  "message.ccq_core.storage_bridge.no_controller": "请先用链接工具绑定功能储物控制器",
+  "message.ccq_core.storage_bridge.bad_controller": "绑定的控制器不存在或无效",
+  "message.ccq_core.storage_bridge.out_of_range": "超出控制器链接范围",
+  "message.ccq_core.storage_bridge.status": "FXNT：%s · 功能储物：%s",
+  "message.ccq_core.storage_bridge.side_ok": "已连接",
+  "message.ccq_core.storage_bridge.side_missing": "未找到",
+  "tooltip.ccq_core.storage_bridge": "让 FXNT 与功能储物的控制器互相看到并使用对方库存",
+
   "block.ccq_core.ponder_glass_cable": "思索玻璃线缆",
   "block.ccq_core.ponder_covered_cable": "思索包层线缆",
   "block.ccq_core.ponder_smart_cable": "思索智能线缆",

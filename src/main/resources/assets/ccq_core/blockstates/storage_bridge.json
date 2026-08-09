@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "ccq_core:block/storage_bridge"
+    },
+    "facing=south": {
+      "model": "ccq_core:block/storage_bridge",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ccq_core:block/storage_bridge",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "ccq_core:block/storage_bridge",
+      "y": 90
+    }
+  }
+}

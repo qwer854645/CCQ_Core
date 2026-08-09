@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "fxntstorage:block/casings/oak_casing",
+    "up": "fxntstorage:block/casings/oak_casing",
+    "down": "fxntstorage:block/casings/oak_casing",
+    "north": "functionalstorage:block/controller_front",
+    "south": "fxntstorage:block/casings/oak_casing",
+    "east": "fxntstorage:block/casings/oak_casing",
+    "west": "fxntstorage:block/casings/oak_casing"
+  }
+}

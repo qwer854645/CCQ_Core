@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "ccq.core.compat.storage.mixin",
+  "plugin": "ccq.core.compat.storage.mixin.StorageMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "StorageNetworkAccessor",
+    "StorageNetworkMixin",
+    "ConnectedDrawersMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
