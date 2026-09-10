@@ -8,11 +8,10 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
@@ -23,6 +22,7 @@ import java.util.List;
 public class LiquidSnowmanCoolerBlockEntity extends SnowmanCoolerBlockEntity implements IHaveGoggleInformation {
     private static final int TANK_CAPACITY = 4000;
     private static final int INSERTION_THRESHOLD = 500;
+    private static final int CONSUME_AMOUNT = 100;
 
     static final TagKey<net.minecraft.world.level.material.Fluid> REGULAR_COOLANT = TagKey.create(
             Registries.FLUID,
@@ -57,16 +57,33 @@ public class LiquidSnowmanCoolerBlockEntity extends SnowmanCoolerBlockEntity imp
     @Override
     public void tick() {
         super.tick();
-        if (level == null || level.isClientSide || isCreative) {
+        if (level == null || level.isClientSide || isCreative || tank.isEmpty()) {
             return;
         }
-        if (remainingBurnTime > INSERTION_THRESHOLD || tank.isEmpty()) {
+        if (!shouldConsumeFromTank()) {
             return;
         }
-        FluidStack drained = tank.drain(100, IFluidHandler.FluidAction.EXECUTE);
+        FluidStack drained = tank.drain(CONSUME_AMOUNT, IFluidHandler.FluidAction.EXECUTE);
         if (!drained.isEmpty()) {
             applyFluidCooling(drained);
         }
+    }
+
+    /**
+     * Same-tier fuel waits until burn time is low (like CMR item fuels).
+     * Higher-tier fluid in the tank may upgrade immediately so water → coolant
+     * switches to FREEZING without waiting out the remaining water burn.
+     */
+    private boolean shouldConsumeFromTank() {
+        CoolingTier tankTier = tierFor(tank.getFluid());
+        if (tankTier == null) {
+            return false;
+        }
+        FuelType tankFuel = tankTier.toFuelType();
+        if (tankFuel.ordinal() > activeFuel.ordinal()) {
+            return true;
+        }
+        return remainingBurnTime <= INSERTION_THRESHOLD;
     }
 
     @Override
@@ -96,7 +113,7 @@ public class LiquidSnowmanCoolerBlockEntity extends SnowmanCoolerBlockEntity imp
         }
 
         int burnTime = Math.max(1, tier.burnPerBucket() * stack.getAmount() / 1000);
-        FuelType targetFuel = tier == CoolingTier.SPECIAL ? FuelType.SPECIAL : FuelType.NORMAL;
+        FuelType targetFuel = tier.toFuelType();
 
         if (targetFuel.ordinal() < activeFuel.ordinal()) {
             return;
@@ -119,11 +136,14 @@ public class LiquidSnowmanCoolerBlockEntity extends SnowmanCoolerBlockEntity imp
     }
 
     private static CoolingTier tierFor(FluidStack stack) {
+        if (stack.isEmpty()) {
+            return null;
+        }
         Holder<net.minecraft.world.level.material.Fluid> holder = BuiltInRegistries.FLUID.wrapAsHolder(stack.getFluid());
         if (holder.is(SPECIAL_COOLANT)) {
             return CoolingTier.SPECIAL;
         }
-        if (holder.is(REGULAR_COOLANT) || stack.getFluid() == Fluids.WATER) {
+        if (holder.is(REGULAR_COOLANT) || stack.getFluid() == Fluids.WATER || stack.getFluid() == Fluids.FLOWING_WATER) {
             return CoolingTier.REGULAR;
         }
         return null;
@@ -141,6 +161,10 @@ public class LiquidSnowmanCoolerBlockEntity extends SnowmanCoolerBlockEntity imp
 
         int burnPerBucket() {
             return burnPerBucket;
+        }
+
+        FuelType toFuelType() {
+            return this == SPECIAL ? FuelType.SPECIAL : FuelType.NORMAL;
         }
     }
 
@@ -167,8 +191,23 @@ public class LiquidSnowmanCoolerBlockEntity extends SnowmanCoolerBlockEntity imp
 
         @Override
         public int fill(FluidStack resource, FluidAction action) {
+            if (resource.isEmpty() || !isCoolantFluid(resource)) {
+                return 0;
+            }
+
+            CoolingTier incoming = tierFor(resource);
+            CoolingTier current = tierFor(tank.getFluid());
+
+            // Higher-tier coolant displaces leftover water / regular coolant so
+            // pipes can switch from water to freezing coolant without draining first.
+            if (current != null && incoming != null && incoming.ordinal() > current.ordinal()) {
+                if (action.execute()) {
+                    tank.setFluid(FluidStack.EMPTY);
+                }
+            }
+
             int filled = tank.fill(resource, action);
-            if (filled > 0) {
+            if (filled > 0 && action.execute()) {
                 setChanged();
             }
             return filled;

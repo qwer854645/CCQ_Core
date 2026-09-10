@@ -7,7 +7,7 @@ modId = "ccq_core"
 version = "${mod_version}"
 displayName = "CCQ Core"
 authors = "CCQ"
-description = "CCQ modpack core: AE2 Ponder props, embedded Dinar's Crafts Additions resource pack, TACZ gun pack utilities, FXNT↔Functional Storage bridge, and bundled Create Aeronautics Physics Gantry (CAPG 1.0.2)."
+description = "CCQ modpack core: AE2 Ponder props, embedded Dinar's Crafts Additions resource pack, TACZ gun pack utilities, FXNT↔Functional Storage bridge, bundled Create Aeronautics Physics Gantry (CAPG 1.0.2), and embedded BnB Cogwheel Compat 1.0.0."
 
 [[dependencies.ccq_core]]
 modId = "neoforge"
@@ -100,8 +100,28 @@ versionRange = "[1.0.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
+[[dependencies.ccq_core]]
+modId = "farmersrespite"
+mandatory = false
+versionRange = "[3.0.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "fluid"
+mandatory = false
+versionRange = "[1.2.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
 [[mixins]]
 config = "ccq_core.mixins.json"
 
 [[mixins]]
 config = "ccq_core.storage.mixins.json"
+
+[[mixins]]
+config = "ccq_core.farmersrespite.mixins.json"
+
+[[mixins]]
+config = "ccq_core.fluid.mixins.json"

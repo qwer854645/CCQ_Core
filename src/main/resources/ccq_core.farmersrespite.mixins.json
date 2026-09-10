@@ -1,0 +1,13 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "ccq.core.compat.farmersrespite.mixin",
+  "plugin": "ccq.core.compat.farmersrespite.mixin.FarmersRespiteMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "FarmersRespiteDuplicateMenuMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

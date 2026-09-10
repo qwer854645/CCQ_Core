@@ -1,5 +1,6 @@
 {
   "values": [
-    "ccq_core:cooling_liquid"
+    "ccq_core:cooling_liquid",
+    "ccq_core:flowing_cooling_liquid"
   ]
 }

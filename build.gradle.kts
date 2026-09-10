@@ -82,9 +82,12 @@ dependencies {
         }
     }
 
-    val jadeJar = file("libs/jade-1.21.1-neoforge-api.jar")
-    if (jadeJar.exists()) {
-        compileOnly(files(jadeJar))
+    val jadeFullJar = file("libs/Jade-1.21.1-NeoForge-15.10.6.jar")
+    val jadeApiJar = file("libs/jade-1.21.1-neoforge-api.jar")
+    if (jadeFullJar.exists()) {
+        compileOnly(files(jadeFullJar))
+    } else if (jadeApiJar.exists()) {
+        compileOnly(files(jadeApiJar))
     }
 
     val coeJar = file("libs/createoreexcavation-1.21-1.6.8.jar")
@@ -111,12 +114,26 @@ dependencies {
         compileOnly(files(titaniumJar))
     }
 
+    val fluidJar = file("libs/fluid-1.2.4.jar")
+    if (fluidJar.exists()) {
+        compileOnly(files(fluidJar))
+    } else {
+        logger.warn("Missing ${fluidJar.name}; Create Fluid interface survive mixins will not compile.")
+    }
+
     val capgVersion = property("capg_version") as String
     val capgJar = file("libs/createaerophysicsgantry-$capgVersion.jar")
     if (capgJar.exists()) {
         "additionalRuntimeClasspath"(files(capgJar))
     } else {
         logger.warn("Missing ${capgJar.name}; ccq_core will not embed Create Aeronautics Physics Gantry.")
+    }
+
+    val bnbCogJar = file("libs/bnb_cogwheel_compat-1.0.0.jar")
+    if (bnbCogJar.exists()) {
+        "additionalRuntimeClasspath"(files(bnbCogJar))
+    } else {
+        logger.warn("Missing ${bnbCogJar.name}; ccq_core will not embed BnB Cogwheel Compat.")
     }
 
     testImplementation("com.google.code.gson:gson:2.11.0")
@@ -170,25 +187,18 @@ tasks.named<ProcessResources>("processResources") {
 
 val capgVersion = providers.gradleProperty("capg_version")
 val capgJarFile = capgVersion.map { file("libs/createaerophysicsgantry-$it.jar") }
+val bnbCogJarFile = layout.projectDirectory.file("libs/bnb_cogwheel_compat-1.0.0.jar")
 
-val generateCapgJarJarMetadata = tasks.register("generateCapgJarJarMetadata") {
-    val capgJar = capgJarFile.get()
-    onlyIf { capgJar.exists() }
-
-    val metadataDir = layout.buildDirectory.dir("generated/capg-jarjar/META-INF/jarjar")
-    outputs.dir(metadataDir)
-
-    doLast {
-        val digest = MessageDigest.getInstance("MD5").digest(capgJar.readBytes())
-        val md5Version = digest.joinToString("") { "%02x".format(it) }
-        val embeddedName = capgJar.name
-        val metadata = """
-            {
-              "jars": [
+fun jarJarEntryJson(jar: File): String {
+    val digest = MessageDigest.getInstance("MD5").digest(jar.readBytes())
+    val md5Version = digest.joinToString("") { "%02x".format(it) }
+    val embeddedName = jar.name
+    val artifact = embeddedName.removeSuffix(".jar")
+    return """
                 {
                   "identifier": {
                     "group": "",
-                    "artifact": "${embeddedName.removeSuffix(".jar")}"
+                    "artifact": "$artifact"
                   },
                   "version": {
                     "range": "[$md5Version,)",
@@ -196,21 +206,50 @@ val generateCapgJarJarMetadata = tasks.register("generateCapgJarJarMetadata") {
                   },
                   "path": "META-INF/jarjar/$embeddedName",
                   "isObfuscated": false
-                }
-              ]
-            }
-        """.trimIndent()
+                }""".trimIndent()
+}
 
+val generateJarJarMetadata = tasks.register("generateJarJarMetadata") {
+    val jarsProvider = provider {
+        buildList {
+            val capg = capgJarFile.get()
+            if (capg.exists()) add(capg)
+            val bnb = bnbCogJarFile.asFile
+            if (bnb.exists()) add(bnb)
+        }
+    }
+    inputs.files(jarsProvider)
+    val metadataDir = layout.buildDirectory.dir("generated/ccq-jarjar/META-INF/jarjar")
+    outputs.dir(metadataDir)
+    onlyIf { jarsProvider.get().isNotEmpty() }
+
+    doLast {
+        val jars = jarsProvider.get()
         val outDir = metadataDir.get().asFile
         outDir.mkdirs()
+        val metadata = buildString {
+            appendLine("{")
+            appendLine("  \"jars\": [")
+            jars.forEachIndexed { index, jar ->
+                append(jarJarEntryJson(jar))
+                if (index < jars.lastIndex) append(",")
+                appendLine()
+            }
+            appendLine("  ]")
+            appendLine("}")
+        }
         File(outDir, "metadata.json").writeText(metadata)
-        capgJar.copyTo(File(outDir, embeddedName), overwrite = true)
+        jars.forEach { it.copyTo(File(outDir, it.name), overwrite = true) }
+        logger.lifecycle("Jar-in-Jar: embedded ${jars.joinToString { it.name }}")
     }
 }
 
-tasks.named<Jar>("jar") {
-    if (capgJarFile.get().exists()) {
-        dependsOn(generateCapgJarJarMetadata)
-        from(layout.buildDirectory.dir("generated/capg-jarjar"))
+afterEvaluate {
+    tasks.named<ProcessResources>("processResources").configure {
+        dependsOn(generateJarJarMetadata)
+        from(layout.buildDirectory.dir("generated/ccq-jarjar"))
+    }
+    tasks.named<Jar>("jar").configure {
+        dependsOn(generateJarJarMetadata)
     }
 }

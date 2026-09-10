@@ -16,6 +16,20 @@ Create Aeronautics Physics Gantry (embedded mod jar)
 
   Do not also place a separate createaerophysicsgantry jar in the mods folder.
 
+BnB Cogwheel Compat (embedded mod jar)
+--------------------------------------
+
+  Embedded in ccq_core via Jar-in-Jar as bnb_cogwheel_compat-1.0.0.jar.
+
+  Author:  CCQ / qwer854645
+  License: MIT License
+  Source:  https://github.com/qwer854645/BnB_cogwheel_fix
+
+  Fixes Create / Northstar / Fantasizing cogwheel textures under Bits 'n' Bobs
+  2.2+. Loads as mod id bnb_cogwheel_compat at runtime.
+
+  Do not also place a separate bnb_cogwheel_compat jar in the mods folder.
+
 Dinar's Crafts Additions (resource pack, embedded)
 --------------------------------------------------
 

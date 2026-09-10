@@ -1,0 +1,18 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "ccq.core.compat.fluid.mixin",
+  "plugin": "ccq.core.compat.fluid.mixin.FluidMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "FluidInterfaceBlockMixin",
+    "SmartFluidInterfaceBlockMixin",
+    "GutterOutletMountedStorageMixin",
+    "CopperSinkMountedStorageMixin",
+    "GutterOutletMovementBehaviourMixin",
+    "CopperSinkMovementBehaviourMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
