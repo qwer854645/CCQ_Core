@@ -129,7 +129,8 @@ dependencies {
         logger.warn("Missing ${capgJar.name}; ccq_core will not embed Create Aeronautics Physics Gantry.")
     }
 
-    val bnbCogJar = file("libs/bnb_cogwheel_compat-1.0.0.jar")
+    val bnbCogVersion = property("bnb_cogwheel_compat_version") as String
+    val bnbCogJar = file("libs/bnb_cogwheel_compat-$bnbCogVersion.jar")
     if (bnbCogJar.exists()) {
         "additionalRuntimeClasspath"(files(bnbCogJar))
     } else {
@@ -187,7 +188,8 @@ tasks.named<ProcessResources>("processResources") {
 
 val capgVersion = providers.gradleProperty("capg_version")
 val capgJarFile = capgVersion.map { file("libs/createaerophysicsgantry-$it.jar") }
-val bnbCogJarFile = layout.projectDirectory.file("libs/bnb_cogwheel_compat-1.0.0.jar")
+val bnbCogVersion = providers.gradleProperty("bnb_cogwheel_compat_version")
+val bnbCogJarFile = bnbCogVersion.map { file("libs/bnb_cogwheel_compat-$it.jar") }
 
 fun jarJarEntryJson(jar: File): String {
     val digest = MessageDigest.getInstance("MD5").digest(jar.readBytes())
@@ -214,7 +216,7 @@ val generateJarJarMetadata = tasks.register("generateJarJarMetadata") {
         buildList {
             val capg = capgJarFile.get()
             if (capg.exists()) add(capg)
-            val bnb = bnbCogJarFile.asFile
+            val bnb = bnbCogJarFile.get()
             if (bnb.exists()) add(bnb)
         }
     }
@@ -226,7 +228,11 @@ val generateJarJarMetadata = tasks.register("generateJarJarMetadata") {
     doLast {
         val jars = jarsProvider.get()
         val outDir = metadataDir.get().asFile
-        outDir.mkdirs()
+        if (outDir.exists()) {
+            outDir.listFiles()?.forEach { it.delete() }
+        } else {
+            outDir.mkdirs()
+        }
         val metadata = buildString {
             appendLine("{")
             appendLine("  \"jars\": [")

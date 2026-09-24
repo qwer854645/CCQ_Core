@@ -7,7 +7,7 @@ modId = "ccq_core"
 version = "${mod_version}"
 displayName = "CCQ Core"
 authors = "CCQ"
-description = "CCQ modpack core: AE2 Ponder props, embedded Dinar's Crafts Additions resource pack, TACZ gun pack utilities, FXNT↔Functional Storage bridge, bundled Create Aeronautics Physics Gantry (CAPG 1.0.2), and embedded BnB Cogwheel Compat 1.0.0."
+description = "CCQ modpack core: AE2 Ponder props, embedded Dinar's Crafts Additions resource pack, TACZ gun pack utilities, FXNT↔Functional Storage bridge, bundled Create Aeronautics Physics Gantry (CAPG 1.0.2), and embedded BnB Cogwheel Compat 1.0.1."
 
 [[dependencies.ccq_core]]
 modId = "neoforge"
