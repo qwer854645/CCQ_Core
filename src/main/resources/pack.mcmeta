@@ -1,0 +1,13 @@
+{
+  "pack": {
+    "pack_format": 34,
+    "description": "CCQ Core"
+  },
+  "language": {
+    "zh_ls": {
+      "name": "雷石东语",
+      "region": "整活",
+      "bidirectional": false
+    }
+  }
+}

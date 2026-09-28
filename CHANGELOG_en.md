@@ -1,8 +1,11 @@
-# CCQ Core 0.4.55
+# CCQ Core 0.4.56
 
-Changes since **0.4.50**. Current version: `0.4.55`.
+Changes since **0.4.50**. Current version: `0.4.56`.
 
 ## Changes
+
+- **LeiShiDong language (zh_ls)**  
+  Registers custom language「雷石东语 / 整活」via `pack.mcmeta` so the modpack can inject phonetic strings through KubeJS. Translation bodies are not bundled in this mod.
 
 - **BnB cogwheel compat (embedded 1.0.1)**  
   Bits 'n' Bobs 2.3.5 removed the `default_cogwheel*` parents; the legacy retarget pack broke Create / Northstar / Fantasizing cog models on 2.3.5+. The pack now enables only for BnB 2.2.0–2.3.4 and is skipped on 2.3.5+.
