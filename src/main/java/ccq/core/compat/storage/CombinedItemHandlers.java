@@ -7,27 +7,24 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 
 /**
- * Read-only composition of multiple {@link IItemHandler}s for capability exposure.
+ * Composition of multiple {@link IItemHandler}s for capability exposure.
+ * {@link #insertItem} stays slot-strict so {@code ItemHandlerHelper.insertItemStacked}
+ * (used by Create funnels) can walk slots correctly across both networks.
  */
 public final class CombinedItemHandlers implements IItemHandler {
     private final IItemHandler[] handlers;
-    private final int[] slotOffsets;
-    private final int totalSlots;
 
     public CombinedItemHandlers(IItemHandler... handlers) {
-        this.handlers = Arrays.stream(handlers).filter(handler -> handler != null && handler.getSlots() > 0).toArray(IItemHandler[]::new);
-        this.slotOffsets = new int[this.handlers.length];
-        int slots = 0;
-        for (int i = 0; i < this.handlers.length; i++) {
-            slotOffsets[i] = slots;
-            slots += this.handlers[i].getSlots();
-        }
-        this.totalSlots = slots;
+        this.handlers = Arrays.stream(handlers).filter(handler -> handler != null).toArray(IItemHandler[]::new);
     }
 
     @Override
     public int getSlots() {
-        return totalSlots;
+        int slots = 0;
+        for (IItemHandler handler : handlers) {
+            slots += handler.getSlots();
+        }
+        return slots;
     }
 
     @Override
@@ -61,13 +58,15 @@ public final class CombinedItemHandlers implements IItemHandler {
     }
 
     private Resolved resolve(int slot) {
-        if (slot < 0 || slot >= totalSlots) {
+        if (slot < 0) {
             return null;
         }
-        for (int i = handlers.length - 1; i >= 0; i--) {
-            if (slot >= slotOffsets[i]) {
-                return new Resolved(handlers[i], slot - slotOffsets[i]);
+        for (IItemHandler handler : handlers) {
+            int slots = handler.getSlots();
+            if (slot < slots) {
+                return new Resolved(handler, slot);
             }
+            slot -= slots;
         }
         return null;
     }

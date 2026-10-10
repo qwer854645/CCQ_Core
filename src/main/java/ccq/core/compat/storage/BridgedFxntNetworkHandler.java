@@ -9,11 +9,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -56,6 +57,7 @@ public final class BridgedFxntNetworkHandler implements IItemHandlerModifiable {
                 }
             }
         }
+        positions.sort(Comparator.comparingLong(BlockPos::asLong));
         cachedBridgePositions = positions;
         cachedPositionsNetworkVersion = networkVersion;
         cachedBridgeHandlers = null;
@@ -75,6 +77,8 @@ public final class BridgedFxntNetworkHandler implements IItemHandlerModifiable {
                 if (be instanceof StorageBridgeBlockEntity bridge) {
                     genKey = 31L * genKey + bridge.getCacheGeneration();
                     genKey = 31L * genKey + bridge.getFsDrawersListKey();
+                    BlockPos fsKey = bridge.getFsControllerPos();
+                    genKey = 31L * genKey + (fsKey == null ? 0 : fsKey.hashCode());
                 }
             }
         }
@@ -84,15 +88,25 @@ public final class BridgedFxntNetworkHandler implements IItemHandlerModifiable {
         }
 
         List<IItemHandler> handlers = new ArrayList<>();
+        Set<BlockPos> seenFsControllers = new HashSet<>();
         if (level != null) {
             for (BlockPos pos : positions) {
                 BlockEntity be = level.getBlockEntity(pos);
-                if (be instanceof StorageBridgeBlockEntity bridge) {
-                    IItemHandler fs = bridge.getStorageForFxntNetwork();
-                    if (fs != null && fs.getSlots() > 0) {
-                        handlers.add(fs);
-                    }
+                if (!(be instanceof StorageBridgeBlockEntity bridge)) {
+                    continue;
                 }
+                BlockPos fsKey = bridge.getFsControllerPos();
+                if (fsKey != null && seenFsControllers.contains(fsKey)) {
+                    continue;
+                }
+                IItemHandler fs = bridge.getStorageForFxntNetwork();
+                if (fs.getSlots() <= 0) {
+                    continue;
+                }
+                if (fsKey != null) {
+                    seenFsControllers.add(fsKey.immutable());
+                }
+                handlers.add(fs);
             }
         }
 
@@ -106,6 +120,9 @@ public final class BridgedFxntNetworkHandler implements IItemHandlerModifiable {
     }
 
     private Resolved resolve(int slot, List<IItemHandler> bridges) {
+        if (slot < 0) {
+            return null;
+        }
         int nativeSlots = nativeSlots();
         if (slot < nativeSlots) {
             return new Resolved(nativeHandler, slot, true);
@@ -142,32 +159,16 @@ public final class BridgedFxntNetworkHandler implements IItemHandlerModifiable {
         if (stack.isEmpty()) {
             return ItemStack.EMPTY;
         }
-
         List<IItemHandler> bridges = bridgeHandlers();
-        ItemStack remainder = stack;
-        if (nativeSlots() > 0) {
-            // FXNT NetworkItemHandler routes by item type, not by absolute slot.
-            remainder = nativeHandler.insertItem(0, remainder, simulate);
-            if (remainder.isEmpty()) {
-                return ItemStack.EMPTY;
-            }
-        }
-
         Resolved resolved = resolve(slot, bridges);
-        if (resolved != null && !resolved.nativeSide) {
-            remainder = resolved.handler.insertItem(resolved.slot, remainder, simulate);
-            if (remainder.isEmpty()) {
-                return ItemStack.EMPTY;
-            }
+        if (resolved == null) {
+            return stack;
         }
-
-        for (IItemHandler handler : bridges) {
-            remainder = ItemHandlerHelper.insertItemStacked(handler, remainder, simulate);
-            if (remainder.isEmpty()) {
-                return ItemStack.EMPTY;
-            }
+        // FXNT's network handler routes by item type and ignores the absolute slot index.
+        if (resolved.nativeSide) {
+            return nativeHandler.insertItem(0, stack, simulate);
         }
-        return remainder;
+        return resolved.handler.insertItem(resolved.slot, stack, simulate);
     }
 
     @Override
@@ -198,10 +199,9 @@ public final class BridgedFxntNetworkHandler implements IItemHandlerModifiable {
             modifiable.setStackInSlot(resolved.slot, stack);
             return;
         }
-        resolved.handler.extractItem(resolved.slot, Integer.MAX_VALUE, false);
-        if (!stack.isEmpty()) {
-            resolved.handler.insertItem(resolved.slot, stack, false);
-        }
+        // IItemHandler cannot guarantee replacement. Never emulate it by discarding extraction
+        // results: locked drawers and filtered inventories may reject the replacement.
+        throw new UnsupportedOperationException("Bridged inventory does not support direct slot replacement");
     }
 
     private record Resolved(IItemHandler handler, int slot, boolean nativeSide) {

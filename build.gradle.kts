@@ -176,6 +176,12 @@ tasks.test {
     useJUnitPlatform()
 }
 
+// Storage handler tests need the same Minecraft / NeoForge API as production sources.
+sourceSets.test {
+    compileClasspath += sourceSets.main.get().compileClasspath
+    runtimeClasspath += sourceSets.main.get().compileClasspath
+}
+
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
 }

@@ -42,7 +42,6 @@ public class StorageBridgeBlockEntity extends BlockEntity {
     private @Nullable IItemHandler cachedFsDrawers;
     private long cachedFsDrawersKey = Long.MIN_VALUE;
     private @Nullable IItemHandler cachedExposed;
-    private long cachedExposedKey = Long.MIN_VALUE;
 
     public StorageBridgeBlockEntity(BlockPos pos, BlockState state) {
         super(StorageBridgeBlocks.STORAGE_BRIDGE_BE.get(), pos, state);
@@ -149,6 +148,10 @@ public class StorageBridgeBlockEntity extends BlockEntity {
         return fsControllerPos;
     }
 
+    public @Nullable BlockPos getFxntControllerPos() {
+        return fxntControllerPos;
+    }
+
     /**
      * FS caches slot selectors at invalidate time. When FXNT slot count changes, refresh selectors
      * only — avoid full ConnectedDrawers.rebuild() on every jitter.
@@ -161,10 +164,13 @@ public class StorageBridgeBlockEntity extends BlockEntity {
         if (slots == lastReportedFxntSlots) {
             return;
         }
-        lastReportedFxntSlots = slots;
         if (level.getGameTime() < nextSlotInvalidateGameTime) {
             return;
         }
+        if (!level.isLoaded(fsControllerPos)) {
+            return;
+        }
+        lastReportedFxntSlots = slots;
         nextSlotInvalidateGameTime = level.getGameTime() + SLOT_INVALIDATE_COOLDOWN;
         invalidateFunctionalStorageSlotsOnly();
     }
@@ -275,19 +281,32 @@ public class StorageBridgeBlockEntity extends BlockEntity {
         if (level == null || fsControllerPos == null) {
             return -1L;
         }
-        if (!(level.getBlockEntity(fsControllerPos) instanceof StorageControllerTile<?> controller)) {
+        if (!level.isLoaded(fsControllerPos)
+                || !(level.getBlockEntity(fsControllerPos) instanceof StorageControllerTile<?> controller)) {
             return -2L;
         }
-        return computeConnectedDrawersKey(controller.getConnectedDrawers().getConnectedDrawers());
+        long key = computeConnectedDrawersKey(controller.getConnectedDrawers().getConnectedDrawers());
+        for (Long packed : controller.getConnectedDrawers().getConnectedDrawers()) {
+            BlockPos pos = BlockPos.of(packed);
+            BlockEntity be = level.isLoaded(pos) ? level.getBlockEntity(pos) : null;
+            key = 31L * key + System.identityHashCode(be);
+            if (be instanceof ItemControllableDrawerTile<?> drawer) {
+                IItemHandler storage = drawer.getStorage();
+                key = 31L * key + System.identityHashCode(storage);
+                key = 31L * key + (storage == null ? 0 : storage.getSlots());
+            }
+        }
+        return key;
     }
 
     public IItemHandler getExposedItemHandler() {
-        long key = ((long) cacheGeneration << 32)
-                ^ (fxntControllerPos == null ? 0 : fxntControllerPos.hashCode())
-                ^ (fsControllerPos == null ? 0 : fsControllerPos.hashCode());
-        if (cachedExposed != null && key == cachedExposedKey) {
-            return cachedExposed;
+        if (cachedExposed == null) {
+            cachedExposed = new LazyBridgeItemHandler(this::resolveExposedItemHandler);
         }
+        return cachedExposed;
+    }
+
+    private IItemHandler resolveExposedItemHandler() {
         IItemHandler fxnt = getStorageForFunctionalStorage();
         IItemHandler fs = getStorageForFxntNetwork();
         boolean hasFxnt = fxnt.getSlots() > 0;
@@ -302,8 +321,6 @@ public class StorageBridgeBlockEntity extends BlockEntity {
         } else {
             exposed = EmptyItemHandler.INSTANCE;
         }
-        cachedExposed = exposed;
-        cachedExposedKey = key;
         return exposed;
     }
 
@@ -311,10 +328,12 @@ public class StorageBridgeBlockEntity extends BlockEntity {
         if (level == null) {
             return;
         }
-        if (fxntControllerPos != null && !(level.getBlockEntity(fxntControllerPos) instanceof StorageControllerEntity)) {
+        if (fxntControllerPos != null && level.isLoaded(fxntControllerPos)
+                && !(level.getBlockEntity(fxntControllerPos) instanceof StorageControllerEntity)) {
             forgetFxntController();
         }
-        if (fsControllerPos != null && !(level.getBlockEntity(fsControllerPos) instanceof StorageControllerTile<?>)) {
+        if (fsControllerPos != null && level.isLoaded(fsControllerPos)
+                && !(level.getBlockEntity(fsControllerPos) instanceof StorageControllerTile<?>)) {
             clearFsController();
         }
     }
@@ -355,7 +374,7 @@ public class StorageBridgeBlockEntity extends BlockEntity {
     }
 
     private @Nullable IItemHandler resolveNativeFxntHandler() {
-        if (level == null || fxntControllerPos == null) {
+        if (level == null || fxntControllerPos == null || !level.isLoaded(fxntControllerPos)) {
             return null;
         }
         if (!(level.getBlockEntity(fxntControllerPos) instanceof StorageControllerEntity controller)) {
@@ -372,14 +391,14 @@ public class StorageBridgeBlockEntity extends BlockEntity {
      * Linked FS drawers only — skips other storage bridges to prevent recursion.
      */
     private @Nullable IItemHandler resolveNativeFsDrawers() {
-        if (level == null || fsControllerPos == null) {
+        if (level == null || fsControllerPos == null || !level.isLoaded(fsControllerPos)) {
             return null;
         }
         if (!(level.getBlockEntity(fsControllerPos) instanceof StorageControllerTile<?> controller)) {
             return null;
         }
         List<Long> connected = controller.getConnectedDrawers().getConnectedDrawers();
-        long key = computeConnectedDrawersKey(connected);
+        long key = getFsDrawersListKey();
         if (cachedFsDrawers != null && key == cachedFsDrawersKey) {
             return cachedFsDrawers;
         }
@@ -390,7 +409,7 @@ public class StorageBridgeBlockEntity extends BlockEntity {
             if (pos.equals(worldPosition)) {
                 continue;
             }
-            BlockEntity be = level.getBlockEntity(pos);
+            BlockEntity be = level.isLoaded(pos) ? level.getBlockEntity(pos) : null;
             if (be instanceof StorageBridgeBlockEntity) {
                 continue;
             }
@@ -444,6 +463,9 @@ public class StorageBridgeBlockEntity extends BlockEntity {
             }
             if (be instanceof StorageInterfaceEntity storageInterface) {
                 IItemHandler handler = storageInterface.getItemHandler();
+                if (handler instanceof BridgedFxntNetworkHandler bridged) {
+                    handler = bridged.getNativeHandler();
+                }
                 if (handler.getSlots() > 0) {
                     return handler;
                 }
@@ -465,25 +487,17 @@ public class StorageBridgeBlockEntity extends BlockEntity {
         if (level == null) {
             return null;
         }
+        // Linking is handled by tryAutoLinkFunctionalStorage / the linking tool — never here.
+        if (fsControllerPos != null) {
+            IItemHandler drawers = resolveNativeFsDrawers();
+            if (drawers != null) {
+                return drawers;
+            }
+        }
         List<IItemHandler> handlers = new ArrayList<>();
         for (Direction direction : Direction.values()) {
             BlockPos neighbor = worldPosition.relative(direction);
             BlockEntity be = level.getBlockEntity(neighbor);
-            if (be instanceof StorageControllerTile<?> controller) {
-                if (fsControllerPos == null) {
-                    setFsController(neighbor);
-                    long packed = worldPosition.asLong();
-                    List<Long> connected = controller.getConnectedDrawers().getConnectedDrawers();
-                    if (!connected.contains(packed)) {
-                        connected.add(packed);
-                    }
-                    rebuildFunctionalStorageConnections();
-                }
-                IItemHandler drawers = resolveNativeFsDrawers();
-                if (drawers != null) {
-                    return drawers;
-                }
-            }
             if (be instanceof ItemControllableDrawerTile<?> drawer && !(be instanceof StorageBridgeBlockEntity)) {
                 IItemHandler storage = drawer.getStorage();
                 if (storage != null && storage.getSlots() > 0) {
@@ -505,7 +519,6 @@ public class StorageBridgeBlockEntity extends BlockEntity {
         cachedFsDrawers = null;
         cachedFsDrawersKey = Long.MIN_VALUE;
         cachedExposed = null;
-        cachedExposedKey = Long.MIN_VALUE;
         lastReportedFxntSlots = -1;
     }
 
