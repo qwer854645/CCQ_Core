@@ -124,7 +124,7 @@ dependencies {
     val capgVersion = property("capg_version") as String
     val capgJar = file("libs/createaerophysicsgantry-$capgVersion.jar")
     if (capgJar.exists()) {
-        "additionalRuntimeClasspath"(files(capgJar))
+        // Loaded through generated jar-in-jar resources, including in development runs.
     } else {
         logger.warn("Missing ${capgJar.name}; ccq_core will not embed Create Aeronautics Physics Gantry.")
     }
@@ -132,7 +132,7 @@ dependencies {
     val bnbCogVersion = property("bnb_cogwheel_compat_version") as String
     val bnbCogJar = file("libs/bnb_cogwheel_compat-$bnbCogVersion.jar")
     if (bnbCogJar.exists()) {
-        "additionalRuntimeClasspath"(files(bnbCogJar))
+        // Do not also put embedded mods on the Java classpath (duplicate module packages).
     } else {
         logger.warn("Missing ${bnbCogJar.name}; ccq_core will not embed BnB Cogwheel Compat.")
     }
@@ -145,14 +145,23 @@ dependencies {
     val devModpackModsDir = providers.gradleProperty("dev_modpack_mods_dir").map { file(it) }
     val devRuntimeMods = listOf(
         "create-1.21.1-6.0.10.jar",
-        "create-aeronautics-bundled-1.21.1-1.3.0.jar",
-        "sable-neoforge-1.21.1-2.0.3.jar",
+        "create-aeronautics-bundled-1.21.1-1.3.2.jar",
+        "sable-neoforge-1.21.1-2.0.6.jar",
         "createoreexcavation-1.21-1.6.8.jar",
-        "jei-1.21.1-neoforge-19.27.0.343.jar",
+        "jei-1.21.1-neoforge-19.57.0.451.jar",
         "Create More Recipes-1.21.1-1.2.1-fix1.jar",
-        "createaddition-1.6.0.jar",
-        "Jade-1.21.1-NeoForge-15.10.5.jar",
-        "tacz-neoforge-1.21.1-1.1.8-hotfix-r2.jar",
+        "createaddition-1.7.2.jar",
+        "Jade-1.21.1-NeoForge-15.10.6.jar",
+        "tacz-neoforge-1.21.1-1.1.8-hotfix-r7.jar",
+        "fxntstorage-1.3.8+mc-1.21.1-neoforge.jar",
+        "functionalstorage-1.21.1-1.5.8.jar",
+        "titanium-1.21-4.0.43.jar",
+        "FarmersDelight-1.21.1-1.3.4.jar",
+        "FarmersRespite-1.21.1-3.0.1.jar",
+        "spartan_weaponry_unofficial-1.2.3-1.21.1.jar",
+        "fluid-1.2.4.jar",
+        "architectury-13.0.11-neoforge.jar",
+        "curios-neoforge-9.5.1+1.21.1.jar",
     )
     if (devModpackModsDir.isPresent && devModpackModsDir.get().exists()) {
         val modsDir = devModpackModsDir.get()

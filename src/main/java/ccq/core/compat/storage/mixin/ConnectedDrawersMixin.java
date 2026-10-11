@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +25,9 @@ import java.util.Set;
 /**
  * Vanilla rebuild() drops non-drawer positions. Snapshot + registry restore bridges
  * without scanning the whole controller AABB every rebuild.
+ * <p>
+ * If several bridges share the same FXNT controller, only the first (lowest BlockPos)
+ * contributes an item handler so the FXNT inventory is not exposed twice.
  */
 @Mixin(ConnectedDrawers.class)
 public abstract class ConnectedDrawersMixin {
@@ -39,6 +43,9 @@ public abstract class ConnectedDrawersMixin {
 
     @Shadow
     private List<IItemHandler> itemHandlers;
+
+    @Shadow(remap = false)
+    public abstract void rebuildShapes();
 
     @Unique
     private final Set<Long> ccq$bridgeSnapshot = new HashSet<>();
@@ -74,8 +81,12 @@ public abstract class ConnectedDrawersMixin {
 
         BlockPos controllerPos = controllerTile.getBlockPos();
         boolean added = false;
+        Set<BlockPos> seenFxntControllers = new HashSet<>();
 
-        for (Long packed : ccq$bridgeSnapshot) {
+        List<Long> ordered = new ArrayList<>(ccq$bridgeSnapshot);
+        ordered.sort(Long::compareTo);
+
+        for (Long packed : ordered) {
             BlockPos pos = BlockPos.of(packed);
             if (!level.isLoaded(pos)) {
                 continue;
@@ -97,12 +108,23 @@ public abstract class ConnectedDrawersMixin {
             if (!connectedDrawers.contains(packed)) {
                 connectedDrawers.add(packed);
             }
+
+            BlockPos fxntKey = bridge.getFxntControllerPos();
+            if (fxntKey != null && !seenFxntControllers.add(fxntKey.immutable())) {
+                continue;
+            }
+
             itemHandlers.add(new LazyBridgeItemHandler(bridge::getStorageForFunctionalStorage));
             added = true;
         }
 
         if (added && controllerTile.inventoryHandler != null) {
             controllerTile.inventoryHandler.invalidateSlots();
+        }
+        // FS keeps its linking-tool outline separately from the inventory selectors.
+        // Rebuild it after bridge positions have been restored, not before.
+        if (!ordered.isEmpty()) {
+            rebuildShapes();
         }
         ccq$bridgeSnapshot.clear();
     }
