@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "ccq.core.compat.dndesires.mixin",
+  "plugin": "ccq.core.compat.dndesires.mixin.DesiresMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["OmniSpeedControllerMixin", "OmniRotationPropagatorMixin"],
+  "injectors": {"defaultRequire": 1}
+}

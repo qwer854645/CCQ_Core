@@ -125,3 +125,6 @@ config = "ccq_core.farmersrespite.mixins.json"
 
 [[mixins]]
 config = "ccq_core.fluid.mixins.json"
+
+[[mixins]]
+config = "ccq_core.dndesires.mixins.json"
