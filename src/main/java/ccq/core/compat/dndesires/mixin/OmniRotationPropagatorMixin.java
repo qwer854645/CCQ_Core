@@ -15,6 +15,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Omni is a split-shaft speed controller. Mirror Create's
+ * {@code SpeedControllerBlockEntity} handling: outbound faces carry the scrolled
+ * target RPM, and output-side feedback must not replace an established input.
+ */
 @Mixin(RotationPropagator.class)
 public abstract class OmniRotationPropagatorMixin {
     @Shadow
@@ -28,36 +33,48 @@ public abstract class OmniRotationPropagatorMixin {
         List<KineticBlockEntity> neighbours = cir.getReturnValue();
         List<KineticBlockEntity> filtered = null;
         for (KineticBlockEntity neighbour : neighbours) {
-            if (neighbour instanceof OmniSpeedAccess && neighbour.hasSource()
-                    && !current.getBlockPos().equals(neighbour.source)
-                    && ccq$adjacentShaftFace(current, neighbour) != null) {
+            // Create's fallback can still replace the controller source when reverse
+            // convey is zero — drop the edge entirely, like isolating the SC output cog.
+            if (ccq$isOutputFeedbackIntoOmni(neighbour, current)) {
                 if (filtered == null) filtered = new ArrayList<>(neighbours);
                 filtered.remove(neighbour);
             }
         }
-        // Skip reverse traversal completely. Merely returning zero conveyed speed
-        // lets Create's fallback branch replace the controller's source anyway.
         if (filtered != null) cir.setReturnValue(filtered);
     }
 
     @Inject(method = "getConveyedSpeed", at = @At("HEAD"), cancellable = true)
-    private static void ccq$preventOutputFeedback(KineticBlockEntity from, KineticBlockEntity to,
-                                                 CallbackInfoReturnable<Float> cir) {
+    private static void ccq$speedControllerStyleConvey(KineticBlockEntity from, KineticBlockEntity to,
+                                                       CallbackInfoReturnable<Float> cir) {
         if (!(from instanceof OmniSpeedAccess) && !(to instanceof OmniSpeedAccess)) return;
         Direction face = ccq$adjacentShaftFace(from, to);
         if (face == null) return;
 
+        // Output -> Omni: same role as large-cog -> Speed Controller when the cog is
+        // not the source — do not report an amplified reverse speed.
+        if (ccq$isOutputFeedbackIntoOmni(to, from)) {
+            cir.setReturnValue(0f);
+            return;
+        }
+
+        // Omni -> output: emit scrolled target (SpeedController getDesiredOutputSpeed).
         if (from instanceof OmniSpeedAccess omni && from.hasSource()
                 && !to.getBlockPos().equals(from.source)) {
-            float expectedRatio = OmniSpeedMath.outputRatio(omni.ccq$getTargetSpeed(), from.getTheoreticalSpeed());
-            if (getAxisModifier(from, face) != expectedRatio) return;
             float receiver = getAxisModifier(to, face.getOpposite());
             // Retain custom split-shaft ratios. Ordinary shafts/gearboxes use +/-1.
             if (receiver == 1f || receiver == -1f) {
-                cir.setReturnValue(OmniSpeedMath.conveyedOutput(
-                        omni.ccq$getTargetSpeed(), from.getTheoreticalSpeed(), receiver));
+                cir.setReturnValue(OmniSpeedMath.conveyedOutput(omni.ccq$getTargetSpeed(), receiver));
             }
         }
+    }
+
+    /** {@code omni} already takes input elsewhere; {@code other} is on an output shaft face. */
+    @Unique
+    private static boolean ccq$isOutputFeedbackIntoOmni(KineticBlockEntity omni, KineticBlockEntity other) {
+        return omni instanceof OmniSpeedAccess
+                && omni.hasSource()
+                && !other.getBlockPos().equals(omni.source)
+                && ccq$adjacentShaftFace(other, omni) != null;
     }
 
     @Unique
@@ -68,8 +85,6 @@ public abstract class OmniRotationPropagatorMixin {
         var a = from.getBlockState();
         var b = to.getBlockState();
         if (!(a.getBlock() instanceof IRotate ra) || !(b.getBlock() instanceof IRotate rb)) return null;
-        // Gearboxes expose shafts perpendicular to their AXIS property. Query the
-        // actual shaft faces instead of comparing getRotationAxis to this direction.
         if (!ra.hasShaftTowards(from.getLevel(), from.getBlockPos(), a, face)
                 || !rb.hasShaftTowards(to.getLevel(), to.getBlockPos(), b, face.getOpposite())) return null;
         return face;

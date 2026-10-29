@@ -7,11 +7,16 @@ import com.tom.createores.OreVeinGenerator;
 import com.tom.createores.recipe.VeinRecipe;
 import com.tom.createores.util.RandomSpreadGenerator;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.QuartPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.levelgen.LegacyRandomSource;
+import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 
 import javax.annotation.Nullable;
@@ -29,7 +34,7 @@ final class CoeVeinScanTask {
     private final ResourceLocation filterRecipeId;
     private final RandomSpreadGenerator picker;
     private final long seed;
-    private final List<RecipeHolder<VeinRecipe>> allRecipes;
+    private final List<RecipeHolder<VeinRecipe>> candidates;
     private final List<OreVeinScanEntry> results = new ArrayList<>();
     private final Set<String> seen = new HashSet<>();
 
@@ -37,7 +42,6 @@ final class CoeVeinScanTask {
     private final int radiusSq = radius * radius;
     private int dx = -radius;
     private int dz = -radius;
-    private int chunksLoaded;
     private boolean traceAdded;
     private boolean cancelled;
 
@@ -48,7 +52,7 @@ final class CoeVeinScanTask {
         this.filterRecipeId = filterRecipeId;
         this.picker = OreVeinGenerator.getPicker(level);
         this.seed = level.getSeed();
-        this.allRecipes = filterRecipeId == null ? allVeinRecipes(level) : List.of();
+        this.candidates = resolveCandidates(level, filterRecipeId);
     }
 
     void cancel() {
@@ -94,30 +98,17 @@ final class CoeVeinScanTask {
     }
 
     private void processChunk(int dx, int dz) {
+        if (results.size() >= CoeScannerConfig.MAX_RESULTS) {
+            return;
+        }
         if (dx * dx + dz * dz > radiusSq) {
             return;
         }
 
         int chunkX = center.x + dx;
         int chunkZ = center.z + dz;
-        if (!couldContainVein(chunkX, chunkZ)) {
-            return;
-        }
-
-        LevelChunk chunk = level.getChunkSource().getChunkNow(chunkX, chunkZ);
-        if (chunk == null) {
-            if (chunksLoaded >= CoeScannerConfig.MAX_CHUNK_LOADS_PER_SCAN) {
-                return;
-            }
-            chunk = level.getChunk(chunkX, chunkZ);
-            chunksLoaded++;
-        }
-
-        RecipeHolder<VeinRecipe> recipe = OreVeinGenerator.pick(chunk);
+        RecipeHolder<VeinRecipe> recipe = pickWithoutChunkLoad(chunkX, chunkZ);
         if (recipe == null) {
-            return;
-        }
-        if (filterRecipeId != null && !recipe.id().equals(filterRecipeId)) {
             return;
         }
 
@@ -127,9 +118,10 @@ final class CoeVeinScanTask {
         }
 
         int chunkDistance = Math.max(Math.abs(dx), Math.abs(dz));
+        LevelChunk loaded = level.getChunkSource().getChunkNow(chunkX, chunkZ);
         results.add(toEntry(
                 origin,
-                chunk,
+                loaded,
                 recipe,
                 chunkX,
                 chunkZ,
@@ -137,8 +129,43 @@ final class CoeVeinScanTask {
         ));
     }
 
+    /**
+     * Matches Create Ore Excavation's {@code RandomSpreadGenerator.pick(ServerLevel, ChunkPos)}:
+     * structure spacing plus noise-biome sampling. Does not call {@code getChunk}, so dedicated
+     * servers are not forced to generate hundreds of chunks per scan.
+     */
+    @Nullable
+    private RecipeHolder<VeinRecipe> pickWithoutChunkLoad(int chunkX, int chunkZ) {
+        int minQuart = QuartPos.fromBlock(level.getMinBuildHeight());
+        int maxQuart = minQuart + QuartPos.fromBlock(level.getHeight()) - 1;
+
+        for (RecipeHolder<VeinRecipe> holder : candidates) {
+            VeinRecipe vein = holder.value();
+            RandomSpreadStructurePlacement placement = vein.getPlacement();
+            if (placement == null) {
+                continue;
+            }
+            ChunkPos potential = placement.getPotentialStructureChunk(seed, chunkX, chunkZ);
+            if (potential.x != chunkX || potential.z != chunkZ) {
+                continue;
+            }
+
+            WorldgenRandom random = new WorldgenRandom(new LegacyRandomSource(0L));
+            random.setLargeFeatureSeed(seed, chunkX, chunkZ);
+            Holder<Biome> biome = level.getNoiseBiome(
+                    QuartPos.fromSection(chunkX) + random.nextInt(4),
+                    minQuart + random.nextInt(Math.max(1, maxQuart)),
+                    QuartPos.fromSection(chunkZ) + random.nextInt(4)
+            );
+            if (vein.canGenerate(level, biome)) {
+                return holder;
+            }
+        }
+        return null;
+    }
+
     private void finalizeResults() {
-        if (cancelled || traceAdded || filterRecipeId == null) {
+        if (cancelled || traceAdded || filterRecipeId == null || !results.isEmpty()) {
             sortResults();
             return;
         }
@@ -176,36 +203,27 @@ final class CoeVeinScanTask {
         results.sort(Comparator
                 .comparingInt((OreVeinScanEntry entry) -> entry.kind().ordinal())
                 .thenComparingInt(OreVeinScanEntry::distance));
+        if (results.size() > CoeScannerConfig.MAX_RESULTS) {
+            results.subList(CoeScannerConfig.MAX_RESULTS, results.size()).clear();
+        }
     }
 
-    private boolean couldContainVein(int chunkX, int chunkZ) {
-        if (filterRecipeId != null) {
-            return level.getRecipeManager()
-                    .byKey(filterRecipeId)
-                    .filter(holder -> holder.value() instanceof VeinRecipe)
-                    .map(holder -> matchesPlacement((VeinRecipe) holder.value(), chunkX, chunkZ))
-                    .orElse(false);
+    private static List<RecipeHolder<VeinRecipe>> resolveCandidates(
+            ServerLevel level,
+            @Nullable ResourceLocation filterRecipeId
+    ) {
+        if (filterRecipeId == null) {
+            return level.getRecipeManager().getAllRecipesFor(CreateOreExcavation.VEIN_RECIPES.getRecipeType());
         }
-
-        for (RecipeHolder<VeinRecipe> holder : allRecipes) {
-            if (matchesPlacement(holder.value(), chunkX, chunkZ)) {
-                return true;
+        List<RecipeHolder<VeinRecipe>> filtered = new ArrayList<>();
+        level.getRecipeManager().byKey(filterRecipeId).ifPresent(holder -> {
+            if (holder.value() instanceof VeinRecipe) {
+                @SuppressWarnings("unchecked")
+                RecipeHolder<VeinRecipe> veinHolder = (RecipeHolder<VeinRecipe>) holder;
+                filtered.add(veinHolder);
             }
-        }
-        return false;
-    }
-
-    private boolean matchesPlacement(VeinRecipe recipe, int chunkX, int chunkZ) {
-        RandomSpreadStructurePlacement placement = recipe.getPlacement();
-        if (placement == null) {
-            return false;
-        }
-        ChunkPos potential = placement.getPotentialStructureChunk(seed, chunkX, chunkZ);
-        return potential.x == chunkX && potential.z == chunkZ;
-    }
-
-    private static List<RecipeHolder<VeinRecipe>> allVeinRecipes(ServerLevel level) {
-        return level.getRecipeManager().getAllRecipesFor(CreateOreExcavation.VEIN_RECIPES.getRecipeType());
+        });
+        return filtered;
     }
 
     private static OreVeinScanEntry.ScanKind classifyKind(int dx, int dz, int chunkDistance) {

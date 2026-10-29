@@ -1,5 +1,6 @@
 package ccq.core.compat.coe;
 
+import ccq.core.CcqCoreMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -7,7 +8,6 @@ import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -37,13 +37,17 @@ final class CoeScannerSessions {
         }
 
         CoeScannerStorage.ScannerSavedState saved = CoeScannerStorage.load(stack, player.serverLevel().getRecipeManager());
+        CoeVeinScanTask task;
+        try {
+            task = new CoeVeinScanTask(player.serverLevel(), player.blockPosition(), filter);
+        } catch (RuntimeException exception) {
+            CcqCoreMod.LOGGER.warn("Ore vein scanner failed to start for {}", player.getGameProfile().getName(), exception);
+            menu.applyState(filter, saved.entries(), saved.scanned(), false);
+            CoeNetwork.sendScanResults(player, menu.containerId, saved.entries(), false, filter);
+            return;
+        }
 
-        ActiveScan scan = new ActiveScan(
-                hand,
-                filter,
-                new CoeVeinScanTask(player.serverLevel(), player.blockPosition(), filter),
-                menu
-        );
+        ActiveScan scan = new ActiveScan(hand, filter, task, menu);
         ACTIVE.put(player.getUUID(), scan);
 
         CoeScannerStorage.save(player, hand, new CoeScannerStorage.ScannerSavedState(
@@ -71,7 +75,22 @@ final class CoeScannerSessions {
         CoeScannerStorage.ScannerSavedState saved = stack.isEmpty()
                 ? CoeScannerStorage.ScannerSavedState.empty()
                 : CoeScannerStorage.load(stack, player.serverLevel().getRecipeManager());
-        menu.applyState(saved.filterRecipeId(), saved.entries(), saved.scanned(), saved.scanning());
+        boolean scanning = saved.scanning() && isScanning(player.getUUID());
+        menu.applyState(saved.filterRecipeId(), saved.entries(), saved.scanned(), scanning);
+        if (saved.scanning() && !scanning) {
+            clearScanningFlag(player, hand);
+        }
+    }
+
+    static void handleLogout(ServerPlayer player) {
+        ActiveScan active = ACTIVE.remove(player.getUUID());
+        if (active != null) {
+            active.task.cancel();
+            clearScanningFlag(player, active.hand);
+        } else {
+            clearScanningFlag(player, InteractionHand.MAIN_HAND);
+            clearScanningFlag(player, InteractionHand.OFF_HAND);
+        }
     }
 
     static void detachMenu(ServerPlayer player, OreVeinScannerMenu menu) {
@@ -93,7 +112,15 @@ final class CoeScannerSessions {
             return;
         }
 
-        if (!active.task.tick(CoeScannerConfig.CHUNK_CHECKS_PER_TICK)) {
+        boolean finished;
+        try {
+            finished = active.task.tick(CoeScannerConfig.CHUNK_CHECKS_PER_TICK);
+        } catch (RuntimeException exception) {
+            CcqCoreMod.LOGGER.warn("Ore vein scanner crashed while scanning for {}", player.getGameProfile().getName(), exception);
+            active.task.cancel();
+            finished = true;
+        }
+        if (!finished) {
             return;
         }
 
@@ -125,7 +152,17 @@ final class CoeScannerSessions {
         if (stack.isEmpty()) {
             return CoeScannerStorage.ScannerSavedState.empty();
         }
-        return CoeScannerStorage.load(stack, player.serverLevel().getRecipeManager());
+        CoeScannerStorage.ScannerSavedState saved = CoeScannerStorage.load(stack, player.serverLevel().getRecipeManager());
+        if (saved.scanning() && !isScanning(player.getUUID())) {
+            clearScanningFlag(player, hand);
+            return new CoeScannerStorage.ScannerSavedState(
+                    saved.filterRecipeId(),
+                    saved.entries(),
+                    saved.scanned(),
+                    false
+            );
+        }
+        return saved;
     }
 
     private static void completeScan(ServerPlayer player, ActiveScan active, List<OreVeinScanEntry> results) {
@@ -144,7 +181,11 @@ final class CoeScannerSessions {
             active.menu.applyState(active.filter, results, true, false);
         }
 
-        CoeNetwork.sendScanResults(player, containerId, results, true, active.filter);
+        try {
+            CoeNetwork.sendScanResults(player, containerId, results, true, active.filter);
+        } catch (RuntimeException exception) {
+            CcqCoreMod.LOGGER.warn("Ore vein scanner failed to send results to {}", player.getGameProfile().getName(), exception);
+        }
     }
 
     private static List<OreVeinScanEntry> loadSavedEntries(ServerPlayer player, InteractionHand hand) {
@@ -190,17 +231,15 @@ final class CoeScannerSessions {
     }
 
     static void tickAll(net.minecraft.server.MinecraftServer server) {
-        Iterator<Map.Entry<UUID, ActiveScan>> iterator = ACTIVE.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<UUID, ActiveScan> entry = iterator.next();
-            ServerPlayer player = server.getPlayerList().getPlayer(entry.getKey());
+        ScanSessionTicker.tick(ACTIVE, (playerId, scan) -> {
+            ServerPlayer player = server.getPlayerList().getPlayer(playerId);
             if (player == null) {
-                entry.getValue().task.cancel();
-                iterator.remove();
-                continue;
+                scan.task.cancel();
+                ACTIVE.remove(playerId);
+                return;
             }
             tick(player);
-        }
+        });
     }
 
     private static final class ActiveScan {

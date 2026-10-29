@@ -41,7 +41,10 @@ public class OreVeinScannerItem extends Item {
 
             @Override
             public AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
-                return new OreVeinScannerMenu(containerId, inventory, hand, CoeScannerStorage.ScannerSavedState.empty());
+                CoeScannerStorage.ScannerSavedState initial = player instanceof ServerPlayer serverPlayer
+                        ? CoeScannerSessions.readStateForOpen(serverPlayer, hand)
+                        : CoeScannerStorage.ScannerSavedState.empty();
+                return new OreVeinScannerMenu(containerId, inventory, hand, initial);
             }
         };
     }

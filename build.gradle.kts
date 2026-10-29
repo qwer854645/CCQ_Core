@@ -196,6 +196,8 @@ tasks.withType<JavaCompile> {
 }
 
 tasks.named<ProcessResources>("processResources") {
+    // Ensure mods.toml re-expands when only gradle.properties version changes.
+    inputs.property("mod_version", project.version)
     filesMatching("META-INF/neoforge.mods.toml") {
         expand(mapOf("mod_version" to project.version))
     }

@@ -36,7 +36,8 @@ public final class CmrFixes {
         }
 
         NeoForge.EVENT_BUS.addListener(CmrFixes::onEmptyCoolerWrench);
-        CcqCoreMod.LOGGER.info("CMR fixes enabled — empty snowman cooler loot table, wrench pickup, and goggle tooltips");
+        CcqCoreMod.LOGGER.info("CMR fixes enabled — empty snowman cooler loot table, wrench pickup, goggle tooltips, "
+                + "and stable heat requirement sync");
     }
 
     private static void onEmptyCoolerWrench(PlayerInteractEvent.RightClickBlock event) {

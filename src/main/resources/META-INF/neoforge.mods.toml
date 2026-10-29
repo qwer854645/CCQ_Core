@@ -11,105 +11,112 @@ description = "CCQ modpack core: AE2 Ponder props, embedded Dinar's Crafts Addit
 
 [[dependencies.ccq_core]]
 modId = "neoforge"
-mandatory = true
+type = "required"
 versionRange = "[21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "tacz"
-mandatory = false
+type = "optional"
 versionRange = "[1.1.0,)"
 ordering = "BEFORE"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "create"
-mandatory = true
+type = "required"
 versionRange = "[6.0.10,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "aeronautics_bundled"
-mandatory = true
+type = "required"
 versionRange = "[1.2.1,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "sable"
-mandatory = true
+type = "required"
 versionRange = "[2.0.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "sablecompanion"
-mandatory = true
+type = "required"
 versionRange = "[1.0.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "createaddition"
-mandatory = false
+type = "optional"
 versionRange = "[1.0.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "cmr"
-mandatory = false
+type = "optional"
 versionRange = "[1.0.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "jei"
-mandatory = false
+type = "optional"
 versionRange = "[19.0.0,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.ccq_core]]
 modId = "jade"
-mandatory = false
+type = "optional"
 versionRange = "[15.0.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "createoreexcavation"
-mandatory = false
+type = "optional"
 versionRange = "[1.0.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "fxntstorage"
-mandatory = false
+type = "optional"
 versionRange = "[1.0.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "functionalstorage"
-mandatory = false
+type = "optional"
 versionRange = "[1.0.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "farmersrespite"
-mandatory = false
+type = "optional"
 versionRange = "[3.0.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ccq_core]]
 modId = "fluid"
-mandatory = false
+type = "optional"
+versionRange = "[1.2.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "spartan_weaponry_unofficial"
+type = "optional"
 versionRange = "[1.2.0,)"
 ordering = "AFTER"
 side = "BOTH"
@@ -125,6 +132,9 @@ config = "ccq_core.farmersrespite.mixins.json"
 
 [[mixins]]
 config = "ccq_core.fluid.mixins.json"
+
+[[mixins]]
+config = "ccq_core.spartan.mixins.json"
 
 [[mixins]]
 config = "ccq_core.dndesires.mixins.json"

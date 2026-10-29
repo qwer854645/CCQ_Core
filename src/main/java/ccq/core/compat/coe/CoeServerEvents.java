@@ -1,11 +1,10 @@
 package ccq.core.compat.coe;
 
-import ccq.core.CcqCoreMod;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
-@EventBusSubscriber(modid = CcqCoreMod.MOD_ID)
 public final class CoeServerEvents {
     private CoeServerEvents() {
     }
@@ -16,5 +15,15 @@ public final class CoeServerEvents {
             return;
         }
         CoeScannerSessions.tickAll(event.getServer());
+    }
+
+    @SubscribeEvent
+    public static void onLogout(PlayerEvent.PlayerLoggedOutEvent event) {
+        if (!CoeCompat.isEnabled()) {
+            return;
+        }
+        if (event.getEntity() instanceof ServerPlayer player) {
+            CoeScannerSessions.handleLogout(player);
+        }
     }
 }

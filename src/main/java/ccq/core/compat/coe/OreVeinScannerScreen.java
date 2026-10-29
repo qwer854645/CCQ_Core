@@ -86,7 +86,6 @@ public class OreVeinScannerScreen extends AbstractContainerScreen<OreVeinScanner
             return;
         }
 
-        menu.setScanPending(true);
         sendScanPacket();
     }
 

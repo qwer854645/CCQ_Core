@@ -15,12 +15,12 @@ public final class CoeClientNetwork {
         }
 
         if (player.containerMenu instanceof OreVeinScannerMenu menu
-                && payload.containerId() >= 0
-                && menu.containerId == payload.containerId()) {
+                && (payload.containerId() < 0 || menu.containerId == payload.containerId())) {
+            boolean scanned = payload.notifyPlayer() || !payload.entries().isEmpty() || menu.hasScanned();
             menu.applyState(
                     payload.filterRecipeId().orElse(null),
                     payload.entries(),
-                    true,
+                    scanned,
                     false
             );
         }

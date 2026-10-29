@@ -6,6 +6,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.ItemStack;
 
@@ -43,6 +44,28 @@ public class OreVeinScannerMenu extends AbstractContainerMenu {
         this.hand = hand;
         this.player = inventory.player;
         applyState(initial.filterRecipeId(), initial.entries(), initial.scanned(), initial.scanning());
+        addDataSlot(new DataSlot() {
+            @Override
+            public int get() {
+                return scanPending ? 1 : 0;
+            }
+
+            @Override
+            public void set(int value) {
+                scanPending = value != 0;
+            }
+        });
+        addDataSlot(new DataSlot() {
+            @Override
+            public int get() {
+                return scanned ? 1 : 0;
+            }
+
+            @Override
+            public void set(int value) {
+                scanned = value != 0;
+            }
+        });
         if (player instanceof ServerPlayer serverPlayer) {
             CoeScannerSessions.attachMenu(serverPlayer, hand, this);
         }

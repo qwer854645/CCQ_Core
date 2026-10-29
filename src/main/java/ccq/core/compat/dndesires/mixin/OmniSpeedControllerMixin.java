@@ -32,7 +32,8 @@ public abstract class OmniSpeedControllerMixin extends SplitShaftBlockEntity imp
         if (!hasSource() || face == getSourceFacing()) {
             cir.setReturnValue(1f);
         } else {
-            // Effective getSpeed() is zero under overstress, even while the input exists.
+            // Use theoretical input: effective getSpeed() is zero under overstress.
+            // Outbound RPM itself is applied in OmniRotationPropagatorMixin (SC-style).
             cir.setReturnValue(OmniSpeedMath.outputRatio(ccq$getTargetSpeed(), getTheoreticalSpeed()));
         }
     }

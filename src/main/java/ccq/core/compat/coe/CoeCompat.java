@@ -25,6 +25,7 @@ public final class CoeCompat {
 
         CoeItems.ITEMS.register(modEventBus);
         CoeMenus.MENUS.register(modEventBus);
+        net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(CoeServerEvents.class);
         CcqCoreMod.LOGGER.info("Create Ore Excavation compatibility enabled.");
     }
 }

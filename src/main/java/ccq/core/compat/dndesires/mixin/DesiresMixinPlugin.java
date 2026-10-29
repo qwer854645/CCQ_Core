@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Set;
 
 public final class DesiresMixinPlugin implements IMixinConfigPlugin {
+    private static final String CREATE = "6.0.10";
+    private static final String DNDESIRES = "2.3a-BETA";
+
     public void onLoad(String mixinPackage) {}
     public String getRefMapperConfig() { return null; }
 
@@ -17,8 +20,13 @@ public final class DesiresMixinPlugin implements IMixinConfigPlugin {
         var desires = mods.getMods().stream().filter(m -> m.getModId().equals("dndesires")).findFirst();
         var create = mods.getMods().stream().filter(m -> m.getModId().equals("create")).findFirst();
         return desires.isPresent() && create.isPresent()
-                && desires.get().getVersion().toString().equals("2.3a-BETA")
-                && create.get().getVersion().toString().equals("6.0.10");
+                && versionMatches(desires.get().getVersion().toString(), DNDESIRES)
+                && versionMatches(create.get().getVersion().toString(), CREATE);
+    }
+
+    /** Exact match, or Create-style build suffix ({@code 6.0.10-280}). */
+    private static boolean versionMatches(String actual, String expected) {
+        return actual.equals(expected) || actual.startsWith(expected + "-");
     }
 
     public void acceptTargets(Set<String> mine, Set<String> others) {}

@@ -1,9 +1,10 @@
 package ccq.core.compat.coe.network;
 
 import ccq.core.CcqCoreMod;
-import ccq.core.compat.coe.CoeClientNetwork;
 import ccq.core.compat.coe.CoeCompat;
 import ccq.core.compat.coe.OreVeinScanEntry;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -40,11 +41,20 @@ public record OreVeinScanResultsPayload(
     }
 
     public static void handle(OreVeinScanResultsPayload payload, net.neoforged.neoforge.network.handling.IPayloadContext context) {
+        if (FMLEnvironment.dist != Dist.CLIENT) {
+            return;
+        }
         context.enqueueWork(() -> {
             if (!CoeCompat.isEnabled()) {
                 return;
             }
-            CoeClientNetwork.handleScanResults(payload);
+            ClientOnly.handle(payload);
         });
+    }
+
+    private static final class ClientOnly {
+        private static void handle(OreVeinScanResultsPayload payload) {
+            ccq.core.compat.coe.CoeClientNetwork.handleScanResults(payload);
+        }
     }
 }

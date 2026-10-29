@@ -12,7 +12,7 @@ import java.util.List;
 
 @Mixin(BlockSpoutBlockEntity.class)
 public abstract class BlockSpoutBlockEntityMixin {
-    @Inject(method = "addToGoggleTooltip", at = @At("RETURN"))
+    @Inject(method = "addToGoggleTooltip", at = @At("RETURN"), cancellable = true)
     private void ccq$appendProcessing(
             List<Component> tooltip,
             boolean isPlayerSneaking,

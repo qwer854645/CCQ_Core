@@ -53,7 +53,7 @@ public final class CoeNetwork {
         if (!(serverPlayer.containerMenu instanceof OreVeinScannerMenu menu) || menu.containerId != payload.containerId()) {
             return;
         }
-        if (menu.isScanPending() || CoeScannerSessions.isScanning(serverPlayer.getUUID())) {
+        if (CoeScannerSessions.isScanning(serverPlayer.getUUID())) {
             return;
         }
         menu.performScan(serverPlayer, payload.filterRecipeId().orElse(null));

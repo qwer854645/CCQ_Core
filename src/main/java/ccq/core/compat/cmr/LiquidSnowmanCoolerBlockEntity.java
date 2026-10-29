@@ -33,7 +33,10 @@ public class LiquidSnowmanCoolerBlockEntity extends SnowmanCoolerBlockEntity imp
             ResourceLocation.fromNamespaceAndPath("ccq_core", "liquid_cooling_special")
     );
 
-    private final FluidTank tank = new FluidTank(TANK_CAPACITY, this::isCoolantFluid);
+    private final FluidTank tank = new CoolantTank(TANK_CAPACITY, stack -> {
+        CoolingTier tier = tierFor(stack);
+        return tier == null ? -1 : tier.ordinal();
+    });
     private final LiquidSnowmanCoolerFluidHandler fluidHandler = new LiquidSnowmanCoolerFluidHandler();
 
     public LiquidSnowmanCoolerBlockEntity(BlockPos pos, BlockState state) {
@@ -80,10 +83,8 @@ public class LiquidSnowmanCoolerBlockEntity extends SnowmanCoolerBlockEntity imp
             return false;
         }
         FuelType tankFuel = tankTier.toFuelType();
-        if (tankFuel.ordinal() > activeFuel.ordinal()) {
-            return true;
-        }
-        return remainingBurnTime <= INSERTION_THRESHOLD;
+        return CoolantTank.shouldConsume(tankFuel.ordinal(), activeFuel.ordinal(),
+                remainingBurnTime, INSERTION_THRESHOLD);
     }
 
     @Override
@@ -115,7 +116,7 @@ public class LiquidSnowmanCoolerBlockEntity extends SnowmanCoolerBlockEntity imp
         int burnTime = Math.max(1, tier.burnPerBucket() * stack.getAmount() / 1000);
         FuelType targetFuel = tier.toFuelType();
 
-        if (targetFuel.ordinal() < activeFuel.ordinal()) {
+        if (targetFuel.ordinal() < activeFuel.ordinal() && remainingBurnTime > 0) {
             return;
         }
 
@@ -193,17 +194,6 @@ public class LiquidSnowmanCoolerBlockEntity extends SnowmanCoolerBlockEntity imp
         public int fill(FluidStack resource, FluidAction action) {
             if (resource.isEmpty() || !isCoolantFluid(resource)) {
                 return 0;
-            }
-
-            CoolingTier incoming = tierFor(resource);
-            CoolingTier current = tierFor(tank.getFluid());
-
-            // Higher-tier coolant displaces leftover water / regular coolant so
-            // pipes can switch from water to freezing coolant without draining first.
-            if (current != null && incoming != null && incoming.ordinal() > current.ordinal()) {
-                if (action.execute()) {
-                    tank.setFluid(FluidStack.EMPTY);
-                }
             }
 
             int filled = tank.fill(resource, action);

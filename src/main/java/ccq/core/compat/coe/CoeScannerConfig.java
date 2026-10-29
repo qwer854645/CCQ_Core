@@ -10,11 +10,11 @@ public final class CoeScannerConfig {
     /** Rescan cooldown in ticks (20 ticks = 1 second). */
     static final int COOLDOWN_TICKS = 20;
 
-    /** Maximum unloaded chunks to load per scan to avoid freezing the server. */
-    static final int MAX_CHUNK_LOADS_PER_SCAN = 384;
-
     /** Placement checks processed per server tick while scanning. */
-    static final int CHUNK_CHECKS_PER_TICK = 48;
+    static final int CHUNK_CHECKS_PER_TICK = 128;
+
+    /** Hard cap so result packets stay within vanilla custom-payload limits. */
+    static final int MAX_RESULTS = 256;
 
     private CoeScannerConfig() {
     }

@@ -5,6 +5,7 @@
   "plugin": "ccq.core.compat.cmr.mixin.CmrMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "HeatConditionStreamCodecMixin",
     "SnowmanCoolerBlockEntityMixin",
     "BlockSpoutBlockEntityMixin"
   ],
