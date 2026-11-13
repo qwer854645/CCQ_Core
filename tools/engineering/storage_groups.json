@@ -1,0 +1,112 @@
+{
+  "engineering_base": [
+    {
+      "row": "canteen",
+      "moves": []
+    },
+    {
+      "row": "west_workshop",
+      "moves": []
+    },
+    {
+      "row": "east_workshop",
+      "moves": []
+    },
+    {
+      "row": "workshop_rear",
+      "moves": []
+    },
+    {
+      "row": "waterworks",
+      "moves": []
+    },
+    {
+      "row": "rear_office",
+      "moves": []
+    },
+    {
+      "row": "rear_stores",
+      "moves": []
+    },
+    {
+      "row": "range_121",
+      "moves": []
+    },
+    {
+      "row": "range_181",
+      "moves": []
+    },
+    {
+      "row": "range_241",
+      "moves": []
+    },
+    {
+      "row": "lodge_kitchen",
+      "moves": [
+        [
+          [
+            41,
+            2,
+            15
+          ],
+          [
+            38,
+            2,
+            15
+          ]
+        ]
+      ]
+    }
+  ],
+  "engineering_base_ruined": [
+    {
+      "row": "canteen",
+      "moves": []
+    },
+    {
+      "row": "east_workshop",
+      "moves": []
+    },
+    {
+      "row": "workshop_rear",
+      "moves": []
+    },
+    {
+      "row": "waterworks",
+      "moves": []
+    },
+    {
+      "row": "rear_office",
+      "moves": []
+    },
+    {
+      "row": "range_121",
+      "moves": []
+    },
+    {
+      "row": "range_181",
+      "moves": []
+    },
+    {
+      "row": "range_241",
+      "moves": []
+    },
+    {
+      "row": "lodge_kitchen",
+      "moves": [
+        [
+          [
+            41,
+            14,
+            15
+          ],
+          [
+            38,
+            14,
+            15
+          ]
+        ]
+      ]
+    }
+  ]
+}

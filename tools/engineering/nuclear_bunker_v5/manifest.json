@@ -1,0 +1,208 @@
+{
+  "size": [
+    96,
+    32,
+    96
+  ],
+  "ground_y": 8,
+  "highest_block": 20,
+  "main_roof_y": 16,
+  "pillbox_roof_y": 14,
+  "template_entries": 99995,
+  "charges": [
+    {
+      "pos": [
+        34,
+        3,
+        24
+      ],
+      "tier": 1
+    },
+    {
+      "pos": [
+        43,
+        3,
+        24
+      ],
+      "tier": 1
+    },
+    {
+      "pos": [
+        52,
+        3,
+        24
+      ],
+      "tier": 2
+    },
+    {
+      "pos": [
+        61,
+        3,
+        24
+      ],
+      "tier": 3
+    }
+  ],
+  "stocked_containers": 77,
+  "observation_loot_containers": [
+    [
+      22,
+      9,
+      39
+    ],
+    [
+      73,
+      9,
+      39
+    ],
+    [
+      22,
+      9,
+      46
+    ],
+    [
+      73,
+      9,
+      46
+    ],
+    [
+      22,
+      9,
+      61
+    ],
+    [
+      73,
+      9,
+      61
+    ],
+    [
+      44,
+      17,
+      44
+    ],
+    [
+      44,
+      17,
+      51
+    ],
+    [
+      51,
+      17,
+      44
+    ],
+    [
+      51,
+      17,
+      51
+    ]
+  ],
+  "gun_chance_per_station": 0.45,
+  "cannon_mounts": 4,
+  "doors": [
+    {
+      "name": "inner",
+      "piston": [
+        52,
+        13,
+        79
+      ],
+      "leaf": [
+        46,
+        9,
+        79,
+        50,
+        11,
+        79
+      ],
+      "travel": 5,
+      "controls": [
+        [
+          51,
+          10,
+          77
+        ],
+        [
+          51,
+          10,
+          81
+        ]
+      ]
+    },
+    {
+      "name": "outer",
+      "piston": [
+        52,
+        13,
+        89
+      ],
+      "leaf": [
+        46,
+        9,
+        89,
+        50,
+        11,
+        89
+      ],
+      "travel": 5,
+      "controls": [
+        [
+          51,
+          10,
+          87
+        ],
+        [
+          51,
+          10,
+          91
+        ]
+      ]
+    },
+    {
+      "name": "vault",
+      "piston": [
+        52,
+        6,
+        51
+      ],
+      "leaf": [
+        46,
+        2,
+        51,
+        50,
+        4,
+        51
+      ],
+      "travel": 5,
+      "controls": [
+        [
+          51,
+          3,
+          49
+        ],
+        [
+          51,
+          3,
+          53
+        ]
+      ]
+    }
+  ],
+  "support_slab_fixes": 0,
+  "compacted_cranks": [
+    {
+      "from": [
+        27,
+        11,
+        42
+      ],
+      "to": [
+        26,
+        11,
+        42
+      ],
+      "machine": "create:mechanical_press"
+    }
+  ],
+  "prototype_only": false,
+  "instance_files_changed": false
+}

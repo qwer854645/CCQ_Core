@@ -1,0 +1,4 @@
+{
+  "structures": [{"structure": "ccq_testground:abandoned_facility", "weight": 1}],
+  "placement": {"type": "ccq_testground:spawn_facility"}
+}

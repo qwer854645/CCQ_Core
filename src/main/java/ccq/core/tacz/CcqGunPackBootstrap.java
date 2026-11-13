@@ -36,8 +36,24 @@ public final class CcqGunPackBootstrap {
             return;
         }
 
+        var version = ModList.get().getModContainerById("tacz").orElseThrow().getModInfo().getVersion();
+        if (version.getMajorVersion() == 1 && version.getMinorVersion() == 2) return;
+        if(version.getMajorVersion()>1 || version.getMinorVersion()>2)return;
+
         Path taczDir = FMLPaths.GAMEDIR.get().resolve("tacz");
         CcqDefaultGunPackPatch.applyIfPresent(taczDir);
         AppliedArmorerPatch.applyIfPresent(taczDir);
     }
+    public static void beforeOfficialPackScan() {
+        if (!ModList.get().isLoaded("tacz"))return;
+        var version=ModList.get().getModContainerById("tacz").orElseThrow().getModInfo().getVersion();
+        if(version.getMajorVersion()!=1||version.getMinorVersion()!=2)return;
+        try {
+            org.slf4j.LoggerFactory.getLogger("ccq_core").info("Preparing official TACZ packs before resource scan");
+            OfficialGunPackPatch.apply(FMLPaths.GAMEDIR.get().resolve("tacz"),ModList.get().getModFileById("tacz").getFile().getFilePath());
+        }catch(java.io.IOException|com.google.gson.JsonParseException e){
+            org.slf4j.LoggerFactory.getLogger("ccq_core").error("Official TACZ pre-scan patch failed",e);
+        }
+    }
+
 }

@@ -1,0 +1,11 @@
+{
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "ccq_testground:testing_ground",
+    "biome_source": {
+      "biome": "ccq_testground:testing_plain",
+      "type": "minecraft:fixed"
+    }
+  },
+  "type": "ccq_testground:testing_ground"
+}

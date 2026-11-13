@@ -1,0 +1,132 @@
+{
+  "size": [
+    96,
+    32,
+    96
+  ],
+  "ground_y": 8,
+  "highest_block": 20,
+  "main_roof_y": 16,
+  "pillbox_roof_y": 14,
+  "template_entries": 92604,
+  "charges": [
+    {
+      "pos": [
+        34,
+        3,
+        24
+      ],
+      "tier": 1
+    },
+    {
+      "pos": [
+        43,
+        3,
+        24
+      ],
+      "tier": 1
+    },
+    {
+      "pos": [
+        52,
+        3,
+        24
+      ],
+      "tier": 2
+    },
+    {
+      "pos": [
+        61,
+        3,
+        24
+      ],
+      "tier": 3
+    }
+  ],
+  "stocked_containers": 68,
+  "observation_loot_containers": [
+    [
+      22,
+      9,
+      39
+    ],
+    [
+      73,
+      9,
+      39
+    ],
+    [
+      22,
+      9,
+      49
+    ],
+    [
+      73,
+      9,
+      49
+    ],
+    [
+      22,
+      9,
+      61
+    ],
+    [
+      73,
+      9,
+      61
+    ],
+    [
+      44,
+      17,
+      44
+    ],
+    [
+      44,
+      17,
+      51
+    ],
+    [
+      51,
+      17,
+      44
+    ],
+    [
+      51,
+      17,
+      51
+    ]
+  ],
+  "gun_chance_per_station": 0.45,
+  "cannon_mounts": 4,
+  "door": {
+    "piston": [
+      54,
+      13,
+      85
+    ],
+    "leaf": [
+      49,
+      9,
+      85,
+      53,
+      12,
+      85
+    ],
+    "travel": 5,
+    "cranks": [
+      [
+        54,
+        10,
+        83
+      ],
+      [
+        54,
+        10,
+        87
+      ]
+    ]
+  },
+  "support_slab_fixes": 0,
+  "prototype_only": false,
+  "instance_files_changed": false
+}

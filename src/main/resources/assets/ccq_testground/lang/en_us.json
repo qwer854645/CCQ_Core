@@ -1,0 +1,11 @@
+{
+  "biome.ccq_testground.testing_plain": "Engineering Testing Plain",
+  "block.ccq_testground.engineering_portal": "Engineering Portal",
+  "dimension.ccq_testground.testing_ground": "Engineering Test Ground",
+  "message.ccq_testground.base_repair_failed": "Cannot read the engineering base template. Check the server log.",
+  "message.ccq_testground.base_repair_not_found": "Stand inside an existing engineering base in the Test Ground before running recovery.",
+  "message.ccq_testground.base_repaired": "Restored %s engineering base blocks; existing non-air blocks and container contents were preserved.",
+  "message.ccq_testground.blocked_exit": "The exit is obstructed or too small. Clear the exit before trying again.",
+  "message.ccq_testground.info": "CCQ Core %1$s / Engineering Test Ground | %2$s | Portal coordinate scale: 1:1",
+  "message.ccq_testground.no_exit": "No safe exit site near the corresponding coordinates. Try another portal location."
+}

@@ -7,12 +7,12 @@ modId = "ccq_core"
 version = "${mod_version}"
 displayName = "CCQ Core"
 authors = "CCQ"
-description = "CCQ modpack core: AE2 Ponder props, embedded Dinar's Crafts Additions resource pack, TACZ gun pack utilities, FXNT↔Functional Storage bridge, bundled Create Aeronautics Physics Gantry (CAPG 1.0.2), and embedded BnB Cogwheel Compat 1.0.1."
+description = "CCQ modpack core: AE2 Ponder props, embedded Dinar's Crafts Additions resource pack, TACZ gun pack utilities, FXNT鈫擣unctional Storage bridge, bundled Create Aeronautics Physics Gantry (CAPG 1.0.2), and embedded BnB Cogwheel Compat 1.0.1."
 
 [[dependencies.ccq_core]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.1,)"
+versionRange = "[21.1.247,)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -124,6 +124,21 @@ side = "BOTH"
 [[mixins]]
 config = "ccq_core.mixins.json"
 
+[[dependencies.ccq_core]]
+modId = "ccq_testground"
+type = "incompatible"
+versionRange = "*"
+reason = "Engineering Test Ground is included in CCQ Core. Remove the standalone ccq_testground JAR."
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "createbigcannons"
+type = "required"
+versionRange = "[5.11.7,)"
+ordering = "AFTER"
+side = "BOTH"
+
 [[mixins]]
 config = "ccq_core.storage.mixins.json"
 
@@ -138,3 +153,64 @@ config = "ccq_core.spartan.mixins.json"
 
 [[mixins]]
 config = "ccq_core.dndesires.mixins.json"
+
+[[mixins]]
+config = "ccq_core.structurify.mixins.json"
+
+[[mixins]]
+config = "ccq_core.testground.mixins.json"
+
+[[dependencies.ccq_core]]
+modId = "farmersdelight"
+type = "required"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "farmersrespite"
+type = "required"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "kaleidoscope_cookery"
+type = "required"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "kaleidoscope_tavern"
+type = "required"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "supplementaries"
+type = "required"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "createdeco"
+type = "required"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.ccq_core]]
+modId = "computercraft"
+type = "required"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "ccq_core.tacz.mixins.json"
+
+[[mixins]]
+config = "ccq_core.ballistics.mixins.json"

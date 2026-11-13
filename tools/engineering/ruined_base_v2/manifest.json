@@ -1,0 +1,126 @@
+{
+  "size": [
+    120,
+    30,
+    300
+  ],
+  "source_sha256": "bea7b5c6861dd90dae21876d5cb6335b639495ee78186abf9058af8f777877c0",
+  "changed_block_entries": 40983,
+  "template_entries": 94250,
+  "removed_blocks": 19585,
+  "weathered_blocks": 4228,
+  "rubble_blocks": 1148,
+  "heavy_wreckage_blocks": 322,
+  "newly_unsupported_fragments_removed": 14,
+  "stocked_fixed_containers": {
+    "workshop": 62,
+    "lodge": 31,
+    "warehouse": 2
+  },
+  "rare_cache_positions": [
+    [
+      7,
+      2,
+      65
+    ],
+    [
+      43,
+      2,
+      64
+    ]
+  ],
+  "sections": 3,
+  "intact_template_unchanged": true,
+  "detonations": [
+    {
+      "id": "primary_range",
+      "center": [
+        85,
+        80
+      ],
+      "radius": [
+        27,
+        34
+      ]
+    },
+    {
+      "id": "ready_ammunition",
+      "center": [
+        73,
+        53
+      ],
+      "radius": [
+        17,
+        19
+      ]
+    },
+    {
+      "id": "warehouse_ammunition",
+      "center": [
+        26,
+        53
+      ],
+      "radius": [
+        23,
+        19
+      ]
+    },
+    {
+      "id": "maintenance_stocks",
+      "center": [
+        25,
+        96
+      ],
+      "radius": [
+        22,
+        25
+      ]
+    },
+    {
+      "id": "loading_apron",
+      "center": [
+        29,
+        154
+      ],
+      "radius": [
+        27,
+        28
+      ]
+    },
+    {
+      "id": "bulk_stores",
+      "center": [
+        24,
+        207
+      ],
+      "radius": [
+        21,
+        20
+      ]
+    },
+    {
+      "id": "range_spill",
+      "center": [
+        97,
+        173
+      ],
+      "radius": [
+        18,
+        18
+      ]
+    },
+    {
+      "id": "rear_supply_cache",
+      "center": [
+        23,
+        275
+      ],
+      "radius": [
+        16,
+        16
+      ]
+    }
+  ],
+  "evacuation_route": "Traversable from (52,8) to (52,290), including crater detours and one-block steps",
+  "worldgen": "independent prototype; not registered in natural generation"
+}

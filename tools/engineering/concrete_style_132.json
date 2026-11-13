@@ -1,0 +1,449 @@
+{
+  "engineering_base.nbt": {
+    "changed": 77296,
+    "materials": {
+      "minecraft:andesite": 35760,
+      "minecraft:stone_bricks": 10045,
+      "minecraft:polished_andesite": 22886,
+      "createdeco:dean_bricks": 2136,
+      "minecraft:oxidized_cut_copper_slab": 3336,
+      "minecraft:stone_brick_stairs": 104,
+      "minecraft:cut_copper_slab": 458,
+      "minecraft:polished_andesite_slab": 57,
+      "minecraft:stone_brick_slab": 44,
+      "minecraft:waxed_weathered_cut_copper_slab": 457,
+      "minecraft:stone_slab": 288,
+      "minecraft:weathered_cut_copper_slab": 945,
+      "minecraft:stripped_dark_oak_log": 156,
+      "minecraft:calcite": 326,
+      "minecraft:spruce_log": 96,
+      "minecraft:smooth_stone_slab": 160,
+      "minecraft:cracked_stone_bricks": 42
+    }
+  },
+  "engineering_base_ruined.nbt": {
+    "changed": 46197,
+    "materials": {
+      "minecraft:andesite": 24998,
+      "minecraft:cracked_stone_bricks": 2922,
+      "minecraft:stone_bricks": 4352,
+      "minecraft:polished_andesite": 11121,
+      "minecraft:oxidized_cut_copper_slab": 1720,
+      "createdeco:dean_bricks": 442,
+      "minecraft:stone_brick_stairs": 50,
+      "minecraft:polished_andesite_slab": 57,
+      "minecraft:stripped_dark_oak_log": 146,
+      "minecraft:calcite": 296,
+      "minecraft:stone_slab": 80,
+      "minecraft:stone_brick_slab": 4,
+      "minecraft:smooth_stone_slab": 9
+    }
+  },
+  "duty_lodge.nbt": {
+    "changed": 1753,
+    "materials": {
+      "minecraft:andesite": 342,
+      "minecraft:polished_andesite": 77,
+      "minecraft:stripped_dark_oak_log": 156,
+      "minecraft:calcite": 326,
+      "minecraft:weathered_cut_copper_slab": 836,
+      "minecraft:stone_bricks": 16
+    }
+  },
+  "base\\section_0.nbt": {
+    "changed": 26927,
+    "materials": {
+      "minecraft:andesite": 11910,
+      "minecraft:stone_bricks": 3244,
+      "minecraft:polished_andesite": 6500,
+      "minecraft:oxidized_cut_copper_slab": 2083,
+      "createdeco:dean_bricks": 855,
+      "minecraft:stone_brick_stairs": 41,
+      "minecraft:cut_copper_slab": 255,
+      "minecraft:polished_andesite_slab": 33,
+      "minecraft:waxed_weathered_cut_copper_slab": 255,
+      "minecraft:weathered_cut_copper_slab": 945,
+      "minecraft:stripped_dark_oak_log": 156,
+      "minecraft:calcite": 326,
+      "minecraft:stone_slab": 160,
+      "minecraft:stone_brick_slab": 4,
+      "minecraft:smooth_stone_slab": 160
+    }
+  },
+  "base\\section_0_clockwise_180.nbt": {
+    "changed": 26927,
+    "materials": {
+      "minecraft:andesite": 11910,
+      "minecraft:stone_bricks": 3244,
+      "minecraft:polished_andesite": 6500,
+      "minecraft:oxidized_cut_copper_slab": 2083,
+      "createdeco:dean_bricks": 855,
+      "minecraft:stone_brick_stairs": 41,
+      "minecraft:cut_copper_slab": 255,
+      "minecraft:polished_andesite_slab": 33,
+      "minecraft:waxed_weathered_cut_copper_slab": 255,
+      "minecraft:weathered_cut_copper_slab": 945,
+      "minecraft:stripped_dark_oak_log": 156,
+      "minecraft:calcite": 326,
+      "minecraft:stone_slab": 160,
+      "minecraft:stone_brick_slab": 4,
+      "minecraft:smooth_stone_slab": 160
+    }
+  },
+  "base\\section_0_clockwise_90.nbt": {
+    "changed": 26927,
+    "materials": {
+      "minecraft:andesite": 11910,
+      "minecraft:stone_bricks": 3244,
+      "minecraft:polished_andesite": 6500,
+      "minecraft:oxidized_cut_copper_slab": 2083,
+      "createdeco:dean_bricks": 855,
+      "minecraft:stone_brick_stairs": 41,
+      "minecraft:cut_copper_slab": 255,
+      "minecraft:polished_andesite_slab": 33,
+      "minecraft:waxed_weathered_cut_copper_slab": 255,
+      "minecraft:weathered_cut_copper_slab": 945,
+      "minecraft:stripped_dark_oak_log": 156,
+      "minecraft:calcite": 326,
+      "minecraft:stone_slab": 160,
+      "minecraft:stone_brick_slab": 4,
+      "minecraft:smooth_stone_slab": 160
+    }
+  },
+  "base\\section_0_counterclockwise_90.nbt": {
+    "changed": 26927,
+    "materials": {
+      "minecraft:andesite": 11910,
+      "minecraft:stone_bricks": 3244,
+      "minecraft:polished_andesite": 6500,
+      "minecraft:oxidized_cut_copper_slab": 2083,
+      "createdeco:dean_bricks": 855,
+      "minecraft:stone_brick_stairs": 41,
+      "minecraft:cut_copper_slab": 255,
+      "minecraft:polished_andesite_slab": 33,
+      "minecraft:waxed_weathered_cut_copper_slab": 255,
+      "minecraft:weathered_cut_copper_slab": 945,
+      "minecraft:stripped_dark_oak_log": 156,
+      "minecraft:calcite": 326,
+      "minecraft:stone_slab": 160,
+      "minecraft:stone_brick_slab": 4,
+      "minecraft:smooth_stone_slab": 160
+    }
+  },
+  "base\\section_1.nbt": {
+    "changed": 23822,
+    "materials": {
+      "minecraft:andesite": 11850,
+      "minecraft:stone_bricks": 2531,
+      "minecraft:polished_andesite": 8378,
+      "createdeco:dean_bricks": 487,
+      "minecraft:oxidized_cut_copper_slab": 173,
+      "minecraft:cut_copper_slab": 203,
+      "minecraft:stone_brick_slab": 8,
+      "minecraft:stone_brick_stairs": 54,
+      "minecraft:waxed_weathered_cut_copper_slab": 78,
+      "minecraft:spruce_log": 24,
+      "minecraft:stone_slab": 16,
+      "minecraft:polished_andesite_slab": 6,
+      "minecraft:cracked_stone_bricks": 14
+    }
+  },
+  "base\\section_1_clockwise_180.nbt": {
+    "changed": 23822,
+    "materials": {
+      "minecraft:andesite": 11850,
+      "minecraft:stone_bricks": 2531,
+      "minecraft:polished_andesite": 8378,
+      "createdeco:dean_bricks": 487,
+      "minecraft:oxidized_cut_copper_slab": 173,
+      "minecraft:cut_copper_slab": 203,
+      "minecraft:stone_brick_slab": 8,
+      "minecraft:stone_brick_stairs": 54,
+      "minecraft:waxed_weathered_cut_copper_slab": 78,
+      "minecraft:spruce_log": 24,
+      "minecraft:stone_slab": 16,
+      "minecraft:polished_andesite_slab": 6,
+      "minecraft:cracked_stone_bricks": 14
+    }
+  },
+  "base\\section_1_clockwise_90.nbt": {
+    "changed": 23822,
+    "materials": {
+      "minecraft:andesite": 11850,
+      "minecraft:stone_bricks": 2531,
+      "minecraft:polished_andesite": 8378,
+      "createdeco:dean_bricks": 487,
+      "minecraft:oxidized_cut_copper_slab": 173,
+      "minecraft:cut_copper_slab": 203,
+      "minecraft:stone_brick_slab": 8,
+      "minecraft:stone_brick_stairs": 54,
+      "minecraft:waxed_weathered_cut_copper_slab": 78,
+      "minecraft:spruce_log": 24,
+      "minecraft:stone_slab": 16,
+      "minecraft:polished_andesite_slab": 6,
+      "minecraft:cracked_stone_bricks": 14
+    }
+  },
+  "base\\section_1_counterclockwise_90.nbt": {
+    "changed": 23822,
+    "materials": {
+      "minecraft:andesite": 11850,
+      "minecraft:stone_bricks": 2531,
+      "minecraft:polished_andesite": 8378,
+      "createdeco:dean_bricks": 487,
+      "minecraft:oxidized_cut_copper_slab": 173,
+      "minecraft:cut_copper_slab": 203,
+      "minecraft:stone_brick_slab": 8,
+      "minecraft:stone_brick_stairs": 54,
+      "minecraft:waxed_weathered_cut_copper_slab": 78,
+      "minecraft:spruce_log": 24,
+      "minecraft:stone_slab": 16,
+      "minecraft:polished_andesite_slab": 6,
+      "minecraft:cracked_stone_bricks": 14
+    }
+  },
+  "base\\section_2.nbt": {
+    "changed": 26547,
+    "materials": {
+      "minecraft:andesite": 12000,
+      "minecraft:stone_bricks": 4270,
+      "minecraft:polished_andesite": 8008,
+      "createdeco:dean_bricks": 794,
+      "minecraft:oxidized_cut_copper_slab": 1080,
+      "minecraft:stone_brick_slab": 32,
+      "minecraft:stone_slab": 112,
+      "minecraft:waxed_weathered_cut_copper_slab": 124,
+      "minecraft:spruce_log": 72,
+      "minecraft:stone_brick_stairs": 9,
+      "minecraft:polished_andesite_slab": 18,
+      "minecraft:cracked_stone_bricks": 28
+    }
+  },
+  "base\\section_2_clockwise_180.nbt": {
+    "changed": 26547,
+    "materials": {
+      "minecraft:andesite": 12000,
+      "minecraft:stone_bricks": 4270,
+      "minecraft:polished_andesite": 8008,
+      "createdeco:dean_bricks": 794,
+      "minecraft:oxidized_cut_copper_slab": 1080,
+      "minecraft:stone_brick_slab": 32,
+      "minecraft:stone_slab": 112,
+      "minecraft:waxed_weathered_cut_copper_slab": 124,
+      "minecraft:spruce_log": 72,
+      "minecraft:stone_brick_stairs": 9,
+      "minecraft:polished_andesite_slab": 18,
+      "minecraft:cracked_stone_bricks": 28
+    }
+  },
+  "base\\section_2_clockwise_90.nbt": {
+    "changed": 26547,
+    "materials": {
+      "minecraft:andesite": 12000,
+      "minecraft:stone_bricks": 4270,
+      "minecraft:polished_andesite": 8008,
+      "createdeco:dean_bricks": 794,
+      "minecraft:oxidized_cut_copper_slab": 1080,
+      "minecraft:stone_brick_slab": 32,
+      "minecraft:stone_slab": 112,
+      "minecraft:waxed_weathered_cut_copper_slab": 124,
+      "minecraft:spruce_log": 72,
+      "minecraft:stone_brick_stairs": 9,
+      "minecraft:polished_andesite_slab": 18,
+      "minecraft:cracked_stone_bricks": 28
+    }
+  },
+  "base\\section_2_counterclockwise_90.nbt": {
+    "changed": 26547,
+    "materials": {
+      "minecraft:andesite": 12000,
+      "minecraft:stone_bricks": 4270,
+      "minecraft:polished_andesite": 8008,
+      "createdeco:dean_bricks": 794,
+      "minecraft:oxidized_cut_copper_slab": 1080,
+      "minecraft:stone_brick_slab": 32,
+      "minecraft:stone_slab": 112,
+      "minecraft:waxed_weathered_cut_copper_slab": 124,
+      "minecraft:spruce_log": 72,
+      "minecraft:stone_brick_stairs": 9,
+      "minecraft:polished_andesite_slab": 18,
+      "minecraft:cracked_stone_bricks": 28
+    }
+  },
+  "ruined_base\\section_0.nbt": {
+    "changed": 13151,
+    "materials": {
+      "minecraft:andesite": 7144,
+      "minecraft:stone_bricks": 1018,
+      "minecraft:cracked_stone_bricks": 718,
+      "minecraft:polished_andesite": 2211,
+      "minecraft:oxidized_cut_copper_slab": 1322,
+      "createdeco:dean_bricks": 161,
+      "minecraft:stone_brick_stairs": 41,
+      "minecraft:polished_andesite_slab": 33,
+      "minecraft:stripped_dark_oak_log": 146,
+      "minecraft:calcite": 296,
+      "minecraft:stone_brick_slab": 4,
+      "minecraft:smooth_stone_slab": 9,
+      "minecraft:stone_slab": 48
+    }
+  },
+  "ruined_base\\section_0_clockwise_180.nbt": {
+    "changed": 13151,
+    "materials": {
+      "minecraft:andesite": 7144,
+      "minecraft:stone_bricks": 1018,
+      "minecraft:cracked_stone_bricks": 718,
+      "minecraft:polished_andesite": 2211,
+      "minecraft:oxidized_cut_copper_slab": 1322,
+      "createdeco:dean_bricks": 161,
+      "minecraft:stone_brick_stairs": 41,
+      "minecraft:polished_andesite_slab": 33,
+      "minecraft:stripped_dark_oak_log": 146,
+      "minecraft:calcite": 296,
+      "minecraft:stone_brick_slab": 4,
+      "minecraft:smooth_stone_slab": 9,
+      "minecraft:stone_slab": 48
+    }
+  },
+  "ruined_base\\section_0_clockwise_90.nbt": {
+    "changed": 13151,
+    "materials": {
+      "minecraft:andesite": 7144,
+      "minecraft:stone_bricks": 1018,
+      "minecraft:cracked_stone_bricks": 718,
+      "minecraft:polished_andesite": 2211,
+      "minecraft:oxidized_cut_copper_slab": 1322,
+      "createdeco:dean_bricks": 161,
+      "minecraft:stone_brick_stairs": 41,
+      "minecraft:polished_andesite_slab": 33,
+      "minecraft:stripped_dark_oak_log": 146,
+      "minecraft:calcite": 296,
+      "minecraft:stone_brick_slab": 4,
+      "minecraft:smooth_stone_slab": 9,
+      "minecraft:stone_slab": 48
+    }
+  },
+  "ruined_base\\section_0_counterclockwise_90.nbt": {
+    "changed": 13151,
+    "materials": {
+      "minecraft:andesite": 7144,
+      "minecraft:stone_bricks": 1018,
+      "minecraft:cracked_stone_bricks": 718,
+      "minecraft:polished_andesite": 2211,
+      "minecraft:oxidized_cut_copper_slab": 1322,
+      "createdeco:dean_bricks": 161,
+      "minecraft:stone_brick_stairs": 41,
+      "minecraft:polished_andesite_slab": 33,
+      "minecraft:stripped_dark_oak_log": 146,
+      "minecraft:calcite": 296,
+      "minecraft:stone_brick_slab": 4,
+      "minecraft:smooth_stone_slab": 9,
+      "minecraft:stone_slab": 48
+    }
+  },
+  "ruined_base\\section_1.nbt": {
+    "changed": 12292,
+    "materials": {
+      "minecraft:andesite": 7611,
+      "minecraft:cracked_stone_bricks": 676,
+      "minecraft:stone_bricks": 666,
+      "minecraft:polished_andesite": 3066,
+      "minecraft:oxidized_cut_copper_slab": 178,
+      "createdeco:dean_bricks": 89,
+      "minecraft:polished_andesite_slab": 6
+    }
+  },
+  "ruined_base\\section_1_clockwise_180.nbt": {
+    "changed": 12292,
+    "materials": {
+      "minecraft:andesite": 7611,
+      "minecraft:cracked_stone_bricks": 676,
+      "minecraft:stone_bricks": 666,
+      "minecraft:polished_andesite": 3066,
+      "minecraft:oxidized_cut_copper_slab": 178,
+      "createdeco:dean_bricks": 89,
+      "minecraft:polished_andesite_slab": 6
+    }
+  },
+  "ruined_base\\section_1_clockwise_90.nbt": {
+    "changed": 12292,
+    "materials": {
+      "minecraft:andesite": 7611,
+      "minecraft:cracked_stone_bricks": 676,
+      "minecraft:stone_bricks": 666,
+      "minecraft:polished_andesite": 3066,
+      "minecraft:oxidized_cut_copper_slab": 178,
+      "createdeco:dean_bricks": 89,
+      "minecraft:polished_andesite_slab": 6
+    }
+  },
+  "ruined_base\\section_1_counterclockwise_90.nbt": {
+    "changed": 12292,
+    "materials": {
+      "minecraft:andesite": 7611,
+      "minecraft:cracked_stone_bricks": 676,
+      "minecraft:stone_bricks": 666,
+      "minecraft:polished_andesite": 3066,
+      "minecraft:oxidized_cut_copper_slab": 178,
+      "createdeco:dean_bricks": 89,
+      "minecraft:polished_andesite_slab": 6
+    }
+  },
+  "ruined_base\\section_2.nbt": {
+    "changed": 20754,
+    "materials": {
+      "minecraft:andesite": 10243,
+      "minecraft:stone_bricks": 2668,
+      "minecraft:cracked_stone_bricks": 1528,
+      "minecraft:polished_andesite": 5844,
+      "createdeco:dean_bricks": 192,
+      "minecraft:oxidized_cut_copper_slab": 220,
+      "minecraft:stone_slab": 32,
+      "minecraft:stone_brick_stairs": 9,
+      "minecraft:polished_andesite_slab": 18
+    }
+  },
+  "ruined_base\\section_2_clockwise_180.nbt": {
+    "changed": 20754,
+    "materials": {
+      "minecraft:andesite": 10243,
+      "minecraft:stone_bricks": 2668,
+      "minecraft:cracked_stone_bricks": 1528,
+      "minecraft:polished_andesite": 5844,
+      "createdeco:dean_bricks": 192,
+      "minecraft:oxidized_cut_copper_slab": 220,
+      "minecraft:stone_slab": 32,
+      "minecraft:stone_brick_stairs": 9,
+      "minecraft:polished_andesite_slab": 18
+    }
+  },
+  "ruined_base\\section_2_clockwise_90.nbt": {
+    "changed": 20754,
+    "materials": {
+      "minecraft:andesite": 10243,
+      "minecraft:stone_bricks": 2668,
+      "minecraft:cracked_stone_bricks": 1528,
+      "minecraft:polished_andesite": 5844,
+      "createdeco:dean_bricks": 192,
+      "minecraft:oxidized_cut_copper_slab": 220,
+      "minecraft:stone_slab": 32,
+      "minecraft:stone_brick_stairs": 9,
+      "minecraft:polished_andesite_slab": 18
+    }
+  },
+  "ruined_base\\section_2_counterclockwise_90.nbt": {
+    "changed": 20754,
+    "materials": {
+      "minecraft:andesite": 10243,
+      "minecraft:stone_bricks": 2668,
+      "minecraft:cracked_stone_bricks": 1528,
+      "minecraft:polished_andesite": 5844,
+      "createdeco:dean_bricks": 192,
+      "minecraft:oxidized_cut_copper_slab": 220,
+      "minecraft:stone_slab": 32,
+      "minecraft:stone_brick_stairs": 9,
+      "minecraft:polished_andesite_slab": 18
+    }
+  }
+}

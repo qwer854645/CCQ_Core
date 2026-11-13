@@ -1,0 +1,11 @@
+{
+  "biome.ccq_testground.testing_plain": "工程试验平原",
+  "block.ccq_testground.engineering_portal": "工程传送门",
+  "dimension.ccq_testground.testing_ground": "工程试验场",
+  "message.ccq_testground.base_repair_failed": "无法读取工程基地模板，请查看服务器日志。",
+  "message.ccq_testground.base_repair_not_found": "请站在工程试验场内已生成的工程基地范围中，再执行补齐命令。",
+  "message.ccq_testground.base_repaired": "工程基地已补齐 %s 个方块；现有非空气方块和箱内物品均已保留。",
+  "message.ccq_testground.blocked_exit": "出口被挡住或门洞太小，请先清理出口。",
+  "message.ccq_testground.info": "CCQ Core %1$s / 工程试验场 | %2$s | 传送门坐标比例：1:1",
+  "message.ccq_testground.no_exit": "无法在对应坐标附近找到安全位置建门，请换一个位置重试。"
+}

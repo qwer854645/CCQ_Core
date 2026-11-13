@@ -1,0 +1,50 @@
+{
+  "size": [
+    96,
+    32,
+    96
+  ],
+  "ground_y": 8,
+  "highest_block": 20,
+  "main_roof_y": 16,
+  "pillbox_roof_y": 14,
+  "template_entries": 92250,
+  "charges": [
+    {
+      "pos": [
+        34,
+        3,
+        24
+      ],
+      "tier": 1
+    },
+    {
+      "pos": [
+        43,
+        3,
+        24
+      ],
+      "tier": 1
+    },
+    {
+      "pos": [
+        52,
+        3,
+        24
+      ],
+      "tier": 2
+    },
+    {
+      "pos": [
+        61,
+        3,
+        24
+      ],
+      "tier": 3
+    }
+  ],
+  "stocked_containers": 14,
+  "support_slab_fixes": 0,
+  "prototype_only": true,
+  "instance_files_changed": false
+}

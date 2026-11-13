@@ -1,0 +1,162 @@
+[
+  {
+    "zone": "lodge",
+    "type": "zombie",
+    "health": 40,
+    "pos": [
+      32,
+      14,
+      24
+    ]
+  },
+  {
+    "zone": "lodge",
+    "type": "skeleton",
+    "health": 36,
+    "pos": [
+      42,
+      14,
+      24
+    ]
+  },
+  {
+    "zone": "forecourt",
+    "type": "zombie",
+    "health": 40,
+    "pos": [
+      63,
+      14,
+      15
+    ]
+  },
+  {
+    "zone": "forecourt",
+    "type": "skeleton",
+    "health": 36,
+    "pos": [
+      78,
+      14,
+      27
+    ]
+  },
+  {
+    "zone": "forecourt",
+    "type": "zombie",
+    "health": 40,
+    "pos": [
+      92,
+      14,
+      16
+    ]
+  },
+  {
+    "zone": "forecourt",
+    "type": "spider",
+    "health": 28,
+    "pos": [
+      109,
+      14,
+      30
+    ]
+  },
+  {
+    "zone": "warehouse",
+    "type": "zombie",
+    "health": 40,
+    "pos": [
+      7,
+      14,
+      59
+    ]
+  },
+  {
+    "zone": "warehouse",
+    "type": "skeleton",
+    "health": 36,
+    "pos": [
+      41,
+      14,
+      63
+    ]
+  },
+  {
+    "zone": "waterworks",
+    "type": "zombie",
+    "health": 40,
+    "pos": [
+      9,
+      14,
+      248
+    ]
+  },
+  {
+    "zone": "waterworks",
+    "type": "zombie",
+    "health": 40,
+    "pos": [
+      36,
+      14,
+      247
+    ]
+  },
+  {
+    "zone": "waterworks",
+    "type": "spider",
+    "health": 28,
+    "pos": [
+      28,
+      14,
+      235
+    ]
+  },
+  {
+    "zone": "rear",
+    "type": "zombie",
+    "health": 40,
+    "pos": [
+      8,
+      14,
+      281
+    ]
+  },
+  {
+    "zone": "rear",
+    "type": "skeleton",
+    "health": 36,
+    "pos": [
+      40,
+      14,
+      282
+    ]
+  },
+  {
+    "zone": "rear",
+    "type": "spider",
+    "health": 28,
+    "pos": [
+      31,
+      11,
+      282
+    ]
+  },
+  {
+    "zone": "loading",
+    "type": "zombie",
+    "health": 40,
+    "pos": [
+      10,
+      14,
+      131
+    ]
+  },
+  {
+    "zone": "loading",
+    "type": "skeleton",
+    "health": 36,
+    "pos": [
+      40,
+      12,
+      180
+    ]
+  }
+]

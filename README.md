@@ -1,11 +1,13 @@
 # CCQ Core
 
+当前版本：**0.4.133**。相对 0.4.67 的累计更新见 [发布日志](docs/releases/0.4.133.zh.md)。工程试验场生成完整基地与连锁殉爆损坏基地，支持一次 `/place` 指令放置整座基地。现已内置工程试验场（原独立测试版 0.1.5），使用方法与存档兼容说明见 [工程试验场](docs/testground.md)。升级时移除独立的 `ccq_testground` JAR，避免重复注册。
+
 Create Craft & Quiet（CCQ）整合包的核心辅助 Mod：AE2 思索装饰方块、内嵌 CCA 材质包与 **Create Aeronautics Physics Gantry（CAPG）**、CMR 兼容补丁、TaCZ 默认枪包运行时精简，以及 Applied Armorer 枪械终端补丁。
 
 | 项目 | 说明 |
 |------|------|
 | Mod ID | `ccq_core` |
-| 版本 | 0.4.17 |
+| 版本 | 0.4.133 |
 | Minecraft | 1.21.1 |
 | 加载器 | NeoForge 21.1+ |
 | 许可证 | [MIT](LICENSE)（源码）；嵌入的 CAPG、CCA 材质包及运行时枪包素材见 [`THIRD_PARTY_NOTICES.txt`](THIRD_PARTY_NOTICES.txt) |
@@ -15,11 +17,17 @@ Create Craft & Quiet（CCQ）整合包的核心辅助 Mod：AE2 思索装饰方�
 
 | Mod | 必需 | 说明 |
 |-----|------|------|
-| NeoForge | 是 | 21.1 及以上 |
+| NeoForge | 是 | 21.1.247 及以上 |
+| Create Big Cannons | 是 | 5.11.7 及以上，工程炮场所需 |
 | [Create](https://www.curseforge.com/minecraft/mc-mods/create) | 是 | 6.0.10 及以上 |
 | [Create Aeronautics](https://modrinth.com/mod/create-aeronautics)（`aeronautics_bundled`） | 是 | CAPG 运行所需 |
 | Sable（`sable`） | 是 | Aeronautics 依赖 |
 | Sable Companion（`sablecompanion`） | 是 | Aeronautics 依赖 |
+| Farmer's Delight / Farmer's Respite | 是 | 生活区厨柜、炉灶、烹饪与茶点 |
+| Kaleidoscope Cookery / Kaleidoscope Tavern | 是 | 生活区桌椅、沙发、茶具与吊灯 |
+| Supplementaries（含 Moonlight 依赖） | 是 | 生活区时钟、地球仪和储物装饰 |
+| Create Deco | 是 | 生活区工业壁灯 |
+| CC:Tweaked | 是 | 生活区值班电脑与打印机 |
 | [Timeless and Classics Zero (TaCZ)](https://www.curseforge.com/minecraft/mc-mods/timeless-and-classics-zero) | 否 | 未安装时跳过枪包相关功能 |
 | Create Crafts & Additions | 否 | 安装后自动启用内置 CCA 材质包；与 CMR 联用时启用液体雪人冷却室 |
 | Create More Recipes（`cmr`） | 否 | 安装后启用雪人冷却室补丁、护目镜 / Jade / JEI 集成 |

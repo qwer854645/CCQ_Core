@@ -1,0 +1,35 @@
+{
+  "size": [
+    120,
+    30,
+    300
+  ],
+  "source_sha256": "bea7b5c6861dd90dae21876d5cb6335b639495ee78186abf9058af8f777877c0",
+  "changed_block_entries": 10837,
+  "template_entries": 93407,
+  "removed_blocks": 2918,
+  "weathered_blocks": 6591,
+  "rubble_blocks": 395,
+  "newly_unsupported_fragments_removed": 10,
+  "stocked_fixed_containers": {
+    "workshop": 151,
+    "warehouse": 45,
+    "lodge": 31
+  },
+  "rare_cache_positions": [
+    [
+      14,
+      2,
+      46
+    ],
+    [
+      14,
+      2,
+      47
+    ]
+  ],
+  "sections": 3,
+  "intact_template_unchanged": true,
+  "evacuation_route": "x=50..55, z=6..293; continuous floor and two-block clearance",
+  "worldgen": "independent prototype; not registered in natural generation"
+}

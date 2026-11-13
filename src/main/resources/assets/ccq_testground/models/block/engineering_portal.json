@@ -1,0 +1,79 @@
+{
+  "elements": [
+    {
+      "to": [
+        16,
+        16,
+        8.5
+      ],
+      "shade": false,
+      "faces": {
+        "west": {
+          "texture": "#portal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "north": {
+          "texture": "#portal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "down": {
+          "texture": "#portal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#portal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#portal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#portal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      },
+      "from": [
+        0,
+        0,
+        7.5
+      ]
+    }
+  ],
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "ccq_testground:block/engineering_portal",
+    "portal": "ccq_testground:block/engineering_portal"
+  },
+  "render_type": "minecraft:translucent"
+}

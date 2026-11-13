@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "ccq_testground:engineering_base",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "ccq_testground:engineering_base",
+    "spacing": 64,
+    "separation": 32,
+    "salt": 91827361
+  }
+}

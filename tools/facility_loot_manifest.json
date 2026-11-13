@@ -1,0 +1,2398 @@
+{
+  "wild_amethyst_facility": {
+    "counts": {
+      "wild_field_supplies": 7,
+      "fuel_canisters": 23,
+      "wild_research_cargo": 9
+    },
+    "containers": [
+      {
+        "pos": [
+          9,
+          3,
+          27
+        ],
+        "table": "wild_field_supplies"
+      },
+      {
+        "pos": [
+          9,
+          3,
+          28
+        ],
+        "table": "wild_field_supplies"
+      },
+      {
+        "pos": [
+          10,
+          3,
+          27
+        ],
+        "table": "wild_field_supplies"
+      },
+      {
+        "pos": [
+          10,
+          3,
+          28
+        ],
+        "table": "wild_field_supplies"
+      },
+      {
+        "pos": [
+          9,
+          4,
+          27
+        ],
+        "table": "wild_field_supplies"
+      },
+      {
+        "pos": [
+          10,
+          4,
+          27
+        ],
+        "table": "wild_field_supplies"
+      },
+      {
+        "pos": [
+          10,
+          4,
+          28
+        ],
+        "table": "wild_field_supplies"
+      },
+      {
+        "pos": [
+          3,
+          7,
+          14
+        ],
+        "table": "wild_research_cargo"
+      },
+      {
+        "pos": [
+          3,
+          7,
+          15
+        ],
+        "table": "wild_research_cargo"
+      },
+      {
+        "pos": [
+          3,
+          7,
+          16
+        ],
+        "table": "wild_research_cargo"
+      },
+      {
+        "pos": [
+          3,
+          7,
+          17
+        ],
+        "table": "wild_research_cargo"
+      },
+      {
+        "pos": [
+          3,
+          7,
+          18
+        ],
+        "table": "wild_research_cargo"
+      },
+      {
+        "pos": [
+          3,
+          7,
+          19
+        ],
+        "table": "wild_research_cargo"
+      },
+      {
+        "pos": [
+          3,
+          7,
+          20
+        ],
+        "table": "wild_research_cargo"
+      },
+      {
+        "pos": [
+          3,
+          7,
+          21
+        ],
+        "table": "wild_research_cargo"
+      },
+      {
+        "pos": [
+          3,
+          7,
+          22
+        ],
+        "table": "wild_research_cargo"
+      }
+    ]
+  },
+  "abandoned_facility": {
+    "counts": {
+      "fuel_canisters": 18,
+      "abandoned_metals": 2,
+      "abandoned_salvage": 185,
+      "abandoned_electronics": 66,
+      "abandoned_research": 28
+    },
+    "containers": [
+      {
+        "pos": [
+          16,
+          2,
+          89
+        ],
+        "table": "abandoned_metals"
+      },
+      {
+        "pos": [
+          18,
+          2,
+          89
+        ],
+        "table": "abandoned_metals"
+      },
+      {
+        "pos": [
+          16,
+          8,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          16,
+          8,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          17,
+          8,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          17,
+          8,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          18,
+          8,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          18,
+          8,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          19,
+          8,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          19,
+          8,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          20,
+          8,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          20,
+          8,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          8,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          8,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          8,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          8,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          8,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          8,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          8,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          8,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          8,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          8,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          8,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          8,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          8,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          8,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          8,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          8,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          8,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          8,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          8,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          8,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          8,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          8,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          8,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          8,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          8,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          8,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          8,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          76
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          77
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          78
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          88
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          89
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          8,
+          90
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          76
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          77
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          78
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          88
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          89
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          8,
+          90
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          36,
+          8,
+          81
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          8,
+          82
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          8,
+          83
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          8,
+          85
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          8,
+          86
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          8,
+          87
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          8,
+          88
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          8,
+          89
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          8,
+          90
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          45,
+          8,
+          54
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          8,
+          55
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          8,
+          56
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          8,
+          57
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          8,
+          58
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          8,
+          59
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          8,
+          60
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          8,
+          54
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          8,
+          55
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          8,
+          56
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          8,
+          57
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          8,
+          58
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          8,
+          59
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          8,
+          60
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          51,
+          8,
+          82
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          8,
+          83
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          8,
+          84
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          8,
+          85
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          8,
+          86
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          8,
+          87
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          8,
+          88
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          8,
+          82
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          8,
+          83
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          8,
+          84
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          8,
+          85
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          8,
+          86
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          8,
+          87
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          8,
+          88
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          16,
+          9,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          16,
+          9,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          17,
+          9,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          17,
+          9,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          18,
+          9,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          18,
+          9,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          19,
+          9,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          19,
+          9,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          20,
+          9,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          20,
+          9,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          9,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          9,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          9,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          9,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          9,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          9,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          9,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          9,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          9,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          9,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          9,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          9,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          9,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          9,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          9,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          9,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          9,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          9,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          9,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          9,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          9,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          9,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          9,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          9,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          9,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          9,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          9,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          77
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          78
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          88
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          89
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          9,
+          90
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          76
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          77
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          78
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          88
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          89
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          9,
+          90
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          76
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          78
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          79
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          80
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          81
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          82
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          83
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          84
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          85
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          86
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          87
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          88
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          89
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          9,
+          90
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          45,
+          9,
+          54
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          9,
+          55
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          9,
+          56
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          9,
+          57
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          9,
+          58
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          9,
+          59
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          45,
+          9,
+          60
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          9,
+          54
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          9,
+          55
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          9,
+          56
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          9,
+          57
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          9,
+          58
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          9,
+          59
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          46,
+          9,
+          60
+        ],
+        "table": "abandoned_research"
+      },
+      {
+        "pos": [
+          51,
+          9,
+          82
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          9,
+          83
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          9,
+          84
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          9,
+          85
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          9,
+          86
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          9,
+          87
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          51,
+          9,
+          88
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          9,
+          82
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          9,
+          83
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          9,
+          84
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          9,
+          85
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          9,
+          86
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          9,
+          87
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          52,
+          9,
+          88
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          21,
+          10,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          10,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          10,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          10,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          10,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          10,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          10,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          10,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          21,
+          10,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          10,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          10,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          10,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          10,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          10,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          10,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          10,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          10,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          22,
+          10,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          10,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          10,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          10,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          10,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          10,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          10,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          10,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          10,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          23,
+          10,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          76
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          77
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          78
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          79
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          80
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          88
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          89
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          34,
+          10,
+          90
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          76
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          77
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          81
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          82
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          83
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          84
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          85
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          86
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          87
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          88
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          89
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          35,
+          10,
+          90
+        ],
+        "table": "abandoned_salvage"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          76
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          77
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          78
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          79
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          80
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          81
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          82
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          83
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          84
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          85
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          86
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          87
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          88
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          89
+        ],
+        "table": "abandoned_electronics"
+      },
+      {
+        "pos": [
+          36,
+          10,
+          90
+        ],
+        "table": "abandoned_electronics"
+      }
+    ]
+  }
+}

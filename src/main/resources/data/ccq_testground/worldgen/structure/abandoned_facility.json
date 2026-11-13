@@ -1,0 +1,7 @@
+{
+  "type": "ccq_testground:spawn_facility",
+  "biomes": ["ccq_testground:testing_plain"],
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "none"
+}

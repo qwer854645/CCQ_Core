@@ -1,0 +1,9 @@
+{
+  "structures": [{"structure": "ccq_testground:nuclear_bunker", "weight": 1}],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 80,
+    "separation": 40,
+    "salt": 91827363
+  }
+}

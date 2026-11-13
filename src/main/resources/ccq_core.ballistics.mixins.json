@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "ccq.core.compat.ballistics.mixin",
+  "plugin": "ccq.core.compat.ballistics.mixin.BallisticsMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "RangefinderSensitivityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

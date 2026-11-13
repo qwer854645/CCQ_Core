@@ -1,0 +1,63 @@
+{
+  "size": [
+    96,
+    40,
+    96
+  ],
+  "ground_y": 8,
+  "template_entries": 99203,
+  "charges": [
+    {
+      "pos": [
+        34,
+        3,
+        18
+      ],
+      "tier": 1
+    },
+    {
+      "pos": [
+        43,
+        3,
+        18
+      ],
+      "tier": 1
+    },
+    {
+      "pos": [
+        52,
+        3,
+        18
+      ],
+      "tier": 2
+    },
+    {
+      "pos": [
+        61,
+        3,
+        18
+      ],
+      "tier": 3
+    }
+  ],
+  "guns": [
+    {
+      "bastion_center": [
+        13,
+        82
+      ],
+      "copied_verified_blocks": 19
+    },
+    {
+      "bastion_center": [
+        82,
+        82
+      ],
+      "copied_verified_blocks": 19
+    }
+  ],
+  "stocked_containers": 23,
+  "structure_id": "ccq_prototype:nuclear_fortress",
+  "prototype_only": true,
+  "instance_files_changed": false
+}

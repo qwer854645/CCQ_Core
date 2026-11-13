@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "ccq_testground:azure_maid_seated",
+      "weight": 1
+    },
+    {
+      "structure": "ccq_testground:azure_maid_standing",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 64,
+    "separation": 32,
+    "salt": 91827364
+  }
+}

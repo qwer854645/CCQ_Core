@@ -1,0 +1,118 @@
+{
+  "azure_maid_seated": {
+    "size": [
+      20,
+      20,
+      19
+    ],
+    "hidden": [
+      {
+        "pos": [
+          8,
+          6,
+          7
+        ],
+        "block": "diamond_block"
+      },
+      {
+        "pos": [
+          8,
+          5,
+          9
+        ],
+        "block": "diamond_block"
+      },
+      {
+        "pos": [
+          8,
+          5,
+          8
+        ],
+        "block": "diamond_block"
+      },
+      {
+        "pos": [
+          8,
+          5,
+          10
+        ],
+        "block": "diamond_block"
+      },
+      {
+        "pos": [
+          8,
+          5,
+          7
+        ],
+        "block": "netherite_block"
+      },
+      {
+        "pos": [
+          9,
+          5,
+          6
+        ],
+        "block": "netherite_block"
+      }
+    ],
+    "source_sha256": "c534e7e6532353c00e37f69bc8086f41efff28848dba93b7913451b2be749201"
+  },
+  "azure_maid_standing": {
+    "size": [
+      18,
+      31,
+      21
+    ],
+    "hidden": [
+      {
+        "pos": [
+          6,
+          13,
+          10
+        ],
+        "block": "diamond_block"
+      },
+      {
+        "pos": [
+          6,
+          12,
+          10
+        ],
+        "block": "diamond_block"
+      },
+      {
+        "pos": [
+          6,
+          14,
+          8
+        ],
+        "block": "diamond_block"
+      },
+      {
+        "pos": [
+          7,
+          11,
+          10
+        ],
+        "block": "diamond_block"
+      },
+      {
+        "pos": [
+          6,
+          12,
+          9
+        ],
+        "block": "netherite_block"
+      },
+      {
+        "pos": [
+          11,
+          12,
+          9
+        ],
+        "block": "netherite_block"
+      }
+    ],
+    "source_sha256": "a377d94c1c4bcc3576627bfeffb3b585d16a686964457efa9080f89a1ff19943"
+  }
+}

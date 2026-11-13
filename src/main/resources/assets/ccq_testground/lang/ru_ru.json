@@ -1,0 +1,11 @@
+{
+  "biome.ccq_testground.testing_plain": "Инженерная испытательная равнина",
+  "block.ccq_testground.engineering_portal": "Инженерный портал",
+  "dimension.ccq_testground.testing_ground": "Инженерный полигон",
+  "message.ccq_testground.base_repair_failed": "Не удалось прочитать шаблон инженерной базы. Проверьте журнал сервера.",
+  "message.ccq_testground.base_repair_not_found": "Перед восстановлением встаньте внутри существующей инженерной базы в испытательном измерении.",
+  "message.ccq_testground.base_repaired": "Восстановлено блоков инженерной базы: %s. Существующие блоки и содержимое контейнеров сохранены.",
+  "message.ccq_testground.blocked_exit": "Выход загорожен или проём слишком мал. Освободите его и повторите попытку.",
+  "message.ccq_testground.info": "CCQ Core %1$s / Инженерный полигон | %2$s | Масштаб координат порталов: 1:1",
+  "message.ccq_testground.no_exit": "Рядом с соответствующими координатами нет безопасного места для выхода. Попробуйте построить портал в другом месте."
+}

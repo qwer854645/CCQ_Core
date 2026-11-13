@@ -1,0 +1,22 @@
+{
+  "base\\section_0.nbt": [
+    {
+      "cross_section_master_reconciliations": 1
+    }
+  ],
+  "base\\section_0_clockwise_180.nbt": [
+    {
+      "cross_section_master_reconciliations": 1
+    }
+  ],
+  "base\\section_0_clockwise_90.nbt": [
+    {
+      "cross_section_master_reconciliations": 1
+    }
+  ],
+  "base\\section_0_counterclockwise_90.nbt": [
+    {
+      "cross_section_master_reconciliations": 1
+    }
+  ]
+}

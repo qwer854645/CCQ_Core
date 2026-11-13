@@ -12,6 +12,13 @@ base {
 }
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+val testgroundSmoke = sourceSets.create("testgroundSmoke") {
+    compileClasspath += sourceSets.main.get().output + sourceSets.main.get().compileClasspath
+    runtimeClasspath += sourceSets.main.get().output + sourceSets.main.get().runtimeClasspath
+}
+if (providers.gradleProperty("engineeringStateBake").isPresent || providers.gradleProperty("engineeringRuinBake").isPresent) {
+    testgroundSmoke.java.srcDir("tools/native")
+}
 
 configurations {
     create("localRuntime")
@@ -29,6 +36,14 @@ neoForge {
     }
 
     runs {
+        register("testgroundSmoke") {
+            server()
+            gameDirectory.set(file(providers.gradleProperty("testgroundSmokeRunDir").getOrElse("run-testground-smoke")))
+            systemProperty("neoforge.gameTestServer", "true")
+            systemProperty("neoforge.enabledGameTestNamespaces", providers.gradleProperty("testgroundSmokeNamespace").getOrElse(if (providers.gradleProperty("engineeringStateBake").isPresent) "ccq_intact_bake" else if (providers.gradleProperty("engineeringRuinBake").isPresent) "ccq_ruin_bake" else "ccq_testground"))
+            systemProperty("ccq.engineeringBakeOutput", file("tools/engineering/connection_states.json").absolutePath)
+            systemProperty("ccq.engineeringRuinBakeOutput", file("tools/engineering/ruined_connection_states.json").absolutePath)
+        }
         register("client") {
             client()
         }
@@ -37,6 +52,7 @@ neoForge {
     mods {
         register("ccq_core") {
             sourceSet(sourceSets.main.get())
+            if (gradle.startParameter.taskNames.any { it.endsWith("runTestgroundSmoke") }) sourceSet(testgroundSmoke)
         }
     }
 }
@@ -52,6 +68,9 @@ repositories {
 }
 
 dependencies {
+    if (providers.gradleProperty("testgroundSmokeMods").isPresent) {
+        runtimeOnly(fileTree(providers.gradleProperty("testgroundSmokeMods").get()) { include("*.jar") })
+    }
     val createSlim = file("libs/create-1.21.1-6.0.10-280-slim.jar")
     if (createSlim.exists()) {
         compileOnly(files(createSlim))

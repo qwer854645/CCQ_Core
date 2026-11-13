@@ -1,0 +1,8 @@
+{
+  "type": "ccq_testground:engineering_facility",
+  "biomes": [],
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "none",
+  "template": "ccq_testground:engineering/assembly_pad"
+}

@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "ccq_testground:block/engineering_portal",
+      "y": 90
+    },
+    "axis=x": {
+      "model": "ccq_testground:block/engineering_portal"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "values": [
+    {
+      "id": "ccq_testground:rich_coal",
+      "required": true
+    },
+    {
+      "id": "ccq_testground:rich_iron",
+      "required": true
+    },
+    {
+      "id": "ccq_testground:rich_copper",
+      "required": true
+    },
+    {
+      "id": "ccq_testground:rich_gold",
+      "required": true
+    },
+    {
+      "id": "ccq_testground:rich_redstone",
+      "required": true
+    },
+    {
+      "id": "ccq_testground:rich_lapis",
+      "required": true
+    },
+    {
+      "id": "ccq_testground:rich_diamond",
+      "required": true
+    },
+    {
+      "id": "ccq_testground:rich_emerald",
+      "required": true
+    },
+    {
+      "id": "ccq_testground:rich_zinc",
+      "required": false
+    },
+    {
+      "id": "ccq_testground:rich_lead",
+      "required": false
+    },
+    {
+      "id": "ccq_testground:rich_uranium",
+      "required": false
+    },
+    {
+      "id": "ccq_testground:rich_thorium",
+      "required": false
+    },
+    {
+      "id": "ccq_testground:rich_nitrate",
+      "required": false
+    },
+    {
+      "id": "ccq_testground:rich_platinum",
+      "required": false
+    },
+    {
+      "id": "ccq_testground:rich_salt",
+      "required": false
+    }
+  ],
+  "replace": false
+}

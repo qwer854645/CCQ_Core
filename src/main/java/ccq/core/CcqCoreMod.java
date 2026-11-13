@@ -27,5 +27,6 @@ public class CcqCoreMod {
         CmrSnowmanCapabilities.register(modEventBus);
         CoeCompat.register(modEventBus);
         StorageCompat.register(modEventBus);
+        ccq.core.testground.TestGroundModule.register(modEventBus);
     }
 }

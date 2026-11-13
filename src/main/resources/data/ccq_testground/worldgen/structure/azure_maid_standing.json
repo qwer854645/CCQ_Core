@@ -1,0 +1,10 @@
+{
+  "type": "ccq_testground:engineering_facility",
+  "template": "ccq_testground:statues/azure_maid_standing",
+  "biomes": [
+    "ccq_testground:testing_plain"
+  ],
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "none"
+}

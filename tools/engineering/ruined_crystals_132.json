@@ -1,0 +1,68 @@
+{
+  "formations": [
+    {
+      "zone": "primary_range",
+      "root": [
+        84,
+        4,
+        80
+      ],
+      "scale": [
+        1.0,
+        0.82,
+        1.0
+      ],
+      "source_voxels_placed": 1981
+    },
+    {
+      "zone": "warehouse",
+      "root": [
+        26,
+        4,
+        53
+      ],
+      "scale": [
+        0.57,
+        0.6,
+        0.57
+      ],
+      "source_voxels_placed": 1981
+    },
+    {
+      "zone": "maintenance",
+      "root": [
+        25,
+        7,
+        97
+      ],
+      "scale": [
+        0.45,
+        0.49,
+        0.45
+      ],
+      "source_voxels_placed": 1981
+    },
+    {
+      "zone": "materials",
+      "root": [
+        25,
+        10,
+        209
+      ],
+      "scale": [
+        0.57,
+        0.57,
+        0.57
+      ],
+      "source_voxels_placed": 1981
+    }
+  ],
+  "amethyst_blocks": 3348,
+  "surface_clusters": 24,
+  "source": "engineering/abandoned_facility",
+  "protected_main_corridor_x": [
+    43,
+    62
+  ],
+  "preserved": "inventories, machines, encounters, damage, baked rotation states"
+}

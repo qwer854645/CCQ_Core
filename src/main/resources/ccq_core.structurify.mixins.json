@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "ccq.core.compat.structurify.mixin",
+  "plugin": "ccq.core.compat.structurify.mixin.StructurifyMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["StructureCheckDataAccessor", "EngineeringBaseOverlapMixin"],
+  "injectors": {"defaultRequire": 1}
+}
